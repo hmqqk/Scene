@@ -1,0 +1,35 @@
+<!DOCTYPE HTML >
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>用户登录页</title>
+	<meta http-equiv="keywords" content="">
+    <meta http-equiv="description" content="">
+    <link rel="stylesheet"	 href="css/base.css" />
+    <script type="text/javascript"  src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript"  src="js/base.js"></script>
+  </head>
+  <body id="public_lg">
+     <div  class="log_re" >
+        <form name="loginform" method="post" action="">
+            <h1>牛魔王</h1>
+            <div class="int">
+               <label  for="username"  >*请输入用户名或邮箱</label>
+               <input type="text" placeholder="用户名或邮箱" id="username" name="username"/>
+            </div>
+            <div class="int">
+                <label  for="lpsd"  >*请输入密码</label>
+                <input type="password" placeholder="请输入密码"   id="lpsd" name="lpsd"/>
+            </div>
+            <div class="submit_bn">
+                <input type="button" value="返回首页" id="back"  class="_button" />
+                <input type="button" value="登录"   class="_button"  id="login" name="login"/>
+                <div  class="register_forget_tip">
+                    <a  href="register.html">注册？</a>
+                    <a  href="">忘记密码？</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
