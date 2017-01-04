@@ -1,0 +1,84 @@
+/**
+ * Created by liuhong on 2016/11/22.
+ */
+$(function(){
+    /*login_part and register_part*/
+
+     $('#back').click(function(){
+     window.location.href="index.html";
+     });
+
+    /*index_part*/
+    $('.searchtext').focus(function(){
+        $(this).attr('value',null);
+    });
+
+  /*data testing
+    function jsoncallback(data){
+        alert(data.STATUS);
+        alert(data.MESSAGE);
+        alert(data.DATASET);
+        //	document.write(data.MESSAGE);
+    }
+
+
+    $('#login').click(function(){
+                $.ajax({
+                    url:"http://www.52uku.net/webservice.asmx/login?jsoncallback=?",
+                    dataType:"jsonp",
+                    data:{
+                        "token":"e8903f430804427cb39d1c6bfa951cf65",
+                        "function":"SmartParkLogin",
+                        "para1":$('#username').val(),
+                        "para2":$('#lpsd').val(),
+                        "para3":"",
+                        "para4":"",
+                        "verifycode":"ed216a8894d2eeb43c58013810cf945d"
+                    },
+                    ContentType:"application/x-www-form-urlencoded;charset=utf-8",
+                    jsonp:"callback",
+                    jsonpCallback:"jsoncallback",
+                    timeout:3000,
+                    success:function(result){
+                        alert("success");
+                        alert(result.DATASET[0].UserID);
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                        alert();
+                    }
+                })
+    });
+
+
+    $('#back').click(function(){
+            $.ajax({
+                url:"http://117.34.116.218/webservice.asmx/getTicketTypesList?jsoncallback=?",
+                dataType:"jsonp",
+                data:{
+                    "token":"e8903f430804427cb39d1c6bfa951cf65",
+                    "function":"GetTicketTypeList",
+                    "para1":"SMARTPARKCLIENT",
+                    "para2":"51",
+                    "para3":"0",
+                    "para4":"1",
+                    "verifycode":"c809a941a9584d05972310817f32c715"
+                },
+                ContentType:"application/x-www-form-urlencoded;charset=utf-8",
+                jsonp:"callback",
+                jsonpCallback:"jsoncallback",
+                timeout:3000,
+                success:function(result){
+
+                    alert("success");
+                    alert(result.name);
+
+                },
+
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    alert();
+
+                }
+            })
+    });
+    */
+});
