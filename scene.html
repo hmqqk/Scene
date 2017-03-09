@@ -5,7 +5,9 @@
     <title>Scene</title>
     <link rel='stylesheet' href='css/base.css'>
     <script type="text/javascript"  src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/cookie.js"></script>
+    <script src="js/dataone2.js"></script>
     <script src="js/book.js"></script>
     <script src="js/connect_web.js"></script>
 </head>
@@ -27,17 +29,20 @@
             <!-- /justIT/jsp/user/cart.jsp -->
         </div>
         <div  class="box_user box_shop_user">
+            <!--
             <div>
                 <a  href="login.html">登录</a>
                 <span>|</span>
                 <a  href="register.html">注册</a>
             </div>
+            -->
         </div>
     </div>
 </header>
   <div class="content2">
     <div class="scene2">
         <div class="sceneitems">
+            <!--
             <div class="sceneTitle">
                 <img src="images/suzhou.jpg">
                 <div class="introduction">
@@ -47,13 +52,15 @@
                     <b>开园时间:9:00-17:00</b>
                 </div>
             </div>
+            -->
             <ul class="sceneMsg">
-                <li class="type">景区类型</li>
+                <li class="type">票型ID</li>
+                <li class="type">票型名称</li>
                 <li class="explation">购买说明</li>
                 <li class="cost1">门市价</li>
                 <li class="cost2">网购价</li>
-                <li class="cost2">数量</li>
             </ul>
+            <div class="clear"></div>
             <!--
             <ul class="sceneDMsg">
                 <li class="type"><a href="">欢乐世界</a></li>
@@ -83,6 +90,8 @@
                     <button value="">购买</button>
                 </li>
             </ul>
+             -->
+            <!--
             <ul class="sceneDMsg">
                 <li class="type"><a href="">欢乐世界</a></li>
                 <li class="explation">需提前1天的22:15之前可购买</li>
@@ -97,6 +106,38 @@
                     <button value="">购买</button>
                 </li>
             </ul>
+            -->
+            <!--
+            <form class="shopMsg">
+                <div class="ticketMsg">
+                    <span>游客名:</span>
+                    <input type="text" class="basicMsg">
+                </div>
+                <div class="ticketMsg">
+                    <span>电话:</span>
+                    <input type="text" class="basicMsg">
+                </div>
+                <div class="ticketMsg">
+                    <span>游玩日期:</span>
+                    <input type="text" class="basicMsg">
+                </div>
+                <div class="ticketMsg chooseMsg">
+                    <span>短信通知：</span>
+                    <label>是</label>
+                    <input id="yes" type="radio" checked="checked" >
+                    <label>否</label>
+                    <input id="no" type="radio" >
+                </div>
+                <div class="ticketMsg">
+                    <span>票数：</span>
+                    <a href="javascript:void(0)" class="sub">-</a>
+                    <input type="text" value="1" class="numbers">
+                    <a href="javascript:void(0)" class="add">+</a>
+                </div>
+                <button value="" class="orderSure">确定</button>
+                <button value="" class="orderCancle">取消</button>
+
+            </form>
             -->
         </div>
     </div>
@@ -137,4 +178,5 @@
       </footer>
   </div>
 </body>
+<script src="js/base.js"></script>
 </html>
