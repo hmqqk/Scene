@@ -5,6 +5,7 @@
     <title>order</title>
     <link rel='stylesheet' href='css/base.css'>
     <script type="text/javascript"  src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript"  src="js/cookie.js"></script>
 
 </head>
 <body id="wrap">
@@ -25,11 +26,13 @@
             <!-- /justIT/jsp/user/cart.jsp -->
         </div>
         <div  class="box_user box_shop_user">
+            <!--
             <div>
                 <a  href="login.html">登录</a>
                 <span>|</span>
                 <a  href="register.html">注册</a>
             </div>
+            -->
         </div>
     </div>
 </header>
@@ -37,62 +40,65 @@
        <form class="orderSearch" method="get">
            <div class="rows">
                <div class="palyerMsg">
-                   <label>游玩人姓名：</label>
-                   <input type="text" class="inputMsg">
-               </div>
-               <div class="palyerMsg">
-                   <label>游玩人手机：</label>
-                   <input type="text" class="inputMsg">
+                   <label>票型ID：</label>
+                   <input type="text" class="inputMsg ID">
                </div>
                <div class="palyerMsg">
                    <label>游玩时间：</label>
-                   <input type="text" class="inputMsg">
+                   <input type="text" class="inputMsg startTime">
                    -
-                   <input type="text" class="inputMsg">
+                   <input type="text" class="inputMsg endTime">
                </div>
+               <input type="button" value="查询" class="search searchbyTime">
            </div>
+           <!--
            <div class="rows">
                <div class="palyerMsg">
                    <label>订单状态：</label>
                    <div class="orderTypeMsg">
                        <div>
-                           <input type="text" class="inputMsg on-selected">
+                           <input type="text" class="inputMsg on-selected" value="全部" readonly>
                            <em class="i-triangle">
                                <i class="triangle"></i>
                            </em>
                        </div>
                        <ul class="orderType">
-                           <li class="on">全部</li>
-                           <li class="on">待支付</li>
-                           <li class="on">已支付</li>
-                           <li class="on">已出码</li>
-                           <li class="on">已取消</li>
-                           <li class="on">退票中</li>
-                           <li class="on">退票失败</li>
-                           <li class="on">退票成功</li>
-                           <li class="on">投诉中</li>
-                           <li class="on">处理中</li>
-                           <li class="on">未出码</li>
-                           <li class="on">已完成</li>
+                           <li>
+                               <a href="javascript:void(0)" value="0">全部</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="1">购票成功</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="2">验票完毕</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="3">退票完毕</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="4">部分退票尚未验票</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="5">部分退票部分验票</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="6">部分验票成功</a>
+                            </li>
+                           <li>
+                               <a href="javascript:void(0)" value="7">更复杂的状态</a>
+                           </li>
                        </ul>
 
                    </div>
                </div>
            </div>
+           -->
            <div class="rows">
                <div class="palyerMsg">
-                   <label>订单号：</label>
-                   <input type="text" class="inputMsg">
+                   <label>游客手机号 / 游客姓名 / 订单号 / 电子票二维码号：</label>
+                   <input type="text" class="inputMsg multiple">
                </div>
-               <div class="palyerMsg">
-                   <label>景点名称：</label>
-                   <input type="text" class="inputMsg">
-               </div>
-               <div class="palyerMsg">
-                   <label>订单时间：</label>
-                   <input type="text" class="inputMsg">
-               </div>
-               <input type="button" value="查询" class="search">
+               <input type="button" value="查询" class="search searchbyMultiple">
            </div>
        </form>
        <div class="orderList">
@@ -107,9 +113,10 @@
                        </li>
                        <li class="name3">用户操作信息</li>
                        <li class="name2">订单状态</li>
-                       <li class="name1">游玩人</li>
-                       <li class="name2">总票数</li>
-                       <li class="name4">剩余票数</li>
+                       <li class="name4">总票数</li>
+                       <li class="name4">已退票数</li>
+                       <li class="name4">可用票数</li>
+                       <li class="name4">已用票数</li>
                        <li class="name5">操作</li>
                    </ul>
                </div>
@@ -141,6 +148,18 @@
                    </ul>
                </div>
                -->
+           </div>
+           <div class="calcleMenu">
+               <div class="ticketMsg2"><span>电子门票</span><input type="text" class="basicMsg electName" value=""></div>
+               <div class="ticketMsg2"><span>修改票数</span><input type="text" class="basicMsg cancleNum" value=""></div>
+               <div class="ticketMsg2"><span>重新发码</span>
+                   <label>是</label>
+                   <input type="radio" class="againID cancleNum" value="" name="againID">
+                   <label>否</label>
+                   <input type="radio" class="againID cancleNum" value="" name="againID" checked="checked" >
+               </div>
+               <button value="" class="orderSure2">确定</button>
+               <button value="" class="orderCancle2">取消</button>
            </div>
        </div>
        <div class="clear"></div>
@@ -181,6 +200,7 @@
        </footer>
    </div>
 </body>
+<script type="text/javascript"  src="js/dataone2.js"></script>
 <script type="text/javascript"  src="js/getOrderInfo.js"></script>
-
+<script src="js/base.js"></script>
 </html>
