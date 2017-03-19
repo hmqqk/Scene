@@ -4,10 +4,15 @@
 <meta charset="utf-8">
 <title>景区详细页</title>
 <link  rel="stylesheet"   href="css/base.css"/>
+<script type="text/javascript"  src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/dataone2.js"></script>
+<script src="js/book.js"></script>
+<script src="js/connect_web.js"></script>
 </head>
-
 <body>
-   <header>
+  <header>
     <h1>
         <a  href="index.html">
             <img  src="images/logo.png"  alt="" />
@@ -21,15 +26,9 @@
     </div>
     <div  id="shop_user">
         <div  class="box_shop">
+            <!-- /justIT/jsp/user/cart.jsp -->
         </div>
         <div  class="box_user box_shop_user">
-            <!--
-            <div>
-                <a  href="login.html">登录</a>
-                <span>|</span>
-                <a  href="register.html">注册</a>
-            </div>
-            -->
         </div>
     </div>
 </header>
@@ -43,28 +42,28 @@
             <div class="meType">
                 <p>景点类型</p>
                 <ul class="clear">
-                    <li>景点1</li>
-                    <li>景点2</li>
-                    <li>景点3</li>
-                    <li>景点4</li>
-                    <li>景点5</li>
-                    <li>景点6</li>
-                    <li>景点7</li>
-                    <li>景点8</li>
+                    <li>成人票-日场票</li>
+                    <li>儿童票-日场票</li>
+                    <li>老人票-日场票</li>
+                    <li>其它-日场票</li>
+                    <li>团队票</li>
+                    <li>游船</li>
+                    <li>索道</li>
+                    <li>餐饮票</li>
                 </ul>
             </div>
             <div class="buy_number">
                 <p>数量</p>
                 <div class="buy_number2">
                     <a  href="#" class="sub">-</a>
-                    <input  type="text"  value="6" class="count">
+                    <input  type="text"  value="1" class="count">
                     <a  href="#" class="add">+</a>
                 </div>
             </div>
-            <p  class="detail_price clear">￥66</p>
+            <p  class="detail_price clear">￥366</p>
             <p   class="c_bn">
               <a  href="CarUIServlet?action=addCar&flag=0&gid=${bookdetail.gid}"><input  type="button" class="_button  count_bn"  value="立即购买"></a>
-              <a  href="CarUIServlet?action=addCar&flag=1&gid=${bookdetail.gid}"><input  type="button" class="_button  cart_bn" value="加入购物车"></a >
+              <a  href="CarUIServlet?action=addCar&flag=1&gid=${bookdetail.gid}"><input  type="button" class="_button  cart_bn" value="预定"></a >
           </p>
             <p  class="share">分享：
                 <a class="qq" href="# "></a>
@@ -82,7 +81,7 @@
     <section class="order_each_detail">
         <h2>景区介绍</h2>
         <section>
-            上海迪士尼乐园的所有门票均为指定日票，即游客只能在购票时所选定的日期当天入园。为确保顺利入园，我们建议您提前做好规划，提前购票。
+            上海迪士尼乐园（ShanghaiDisneyland Park）[1]，又称上海迪斯尼乐园，是中国第二个、亚洲第三个，世界第六个迪士尼主题公园。2009年11月4日，上海市人民政府新闻办公室授权宣布：上海迪士尼项目申请报告已获国家有关部门核准。2011年3月9日，上海国际旅游度假区核心区控制性详细规划（草案）已上网公示，上海迪士尼乐园也在此规划中。2011年4月8日乐园主体工程正式破土动工。2013年10月17日主题乐园的地上建筑施工正式开始。2014年12月，华特迪士尼公司曝光了一组上海迪士尼乐园概念设计图，其中包括“玩具总动员”主题酒店的外观设计和迪士尼小镇的整体造型。2016年3月28日开始发售度假区内的主题乐园——上海迪士尼乐园的门票。2016年6月14日，上海迪士尼乐园正式开幕；6月16日中午12时正式开放。
         </section>
    </section>
     <section class="order_each_detail">
@@ -95,7 +94,7 @@
     <section  class="order_each_detail">
        <h2>小贴士</h2>
        <section>
-           上海迪士尼乐园的所有门票均为指定日票，即游客只能在购票时所选定的日期当天入园。为确保顺利入园，我们建议您提前做好规划，提前购票。
+           开园时间：9:00-21:00(9月) 8:00-22:00(9/15，9/16，9/17，9/30) 10:00-19:00(10月) 8:00-20:30(10/1-10/7) 9:00-20:00(10/8，10/15，10/22，10/29)；9:00-20:00(1月3日-15日、1月20日-21日、1月28日)， 9:00-19:00(1月16-19日、1月22日-26日)， 8:00-18:00(1月27日）， 8:00-20:30(1月29日-2月4日)开园时间仅供参考，详情请咨询迪士尼官网
        </section>
    </section>
    
