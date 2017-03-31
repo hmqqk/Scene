@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart</title>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/cookie.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/getChart.js"></script>
+    <!--
+    <script type="text/javascript">
+
+        var chart;
+        $(document).ready(function() {
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'container',
+                    margin: [50, 200, 60, 170]
+                },
+                title: {
+                    text: 'Browser market shares at a specific website, 2010'
+                },
+                plotArea: {
+                    shadow: null,
+                    borderWidth: null,
+                    backgroundColor: null
+                },
+                tooltip: {
+                    formatter: function() {
+                        return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function() {
+                                if (this.y > 5) return this.point.name;
+                            },
+                            color: 'white',
+                            style: {
+                                font: '13px Trebuchet MS, Verdana, sans-serif'
+                            }
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    style: {
+                        left: 'auto',
+                        bottom: 'auto',
+                        right: '50px',
+                        top: '100px'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Browser share',
+                    data: [
+                        ['Firefox',   10.0],
+                        ['IE',       10.0],
+                        {
+                            name: 'Chrome',
+                            y: 10.0,
+                            sliced: true,
+                            selected: true
+                        },
+                        ['Safari',    6.0],
+                        ['Opera',     6.0],
+                        ['Others',   6.0]
+                    ]
+                }]
+            });
+        });
+
+    </script>
+    -->
+</head>
+<body>
+<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+</body>
+</html>

@@ -1,28 +1,12 @@
-/**
- * Created by liuhong on 2016/11/22.
- */
-$(function(){
-    /*login_part and register_part*/
-
-     $('#back').click(function(){
-     window.location.href="index.html";
-     });
-
-    /*index_part*/
-    $('.searchtext').focus(function(){
-        $(this).attr('value',null);
-    });
-    
-    /*getOrderInfo_part*/
-    var token1="e8903f430804427cb39d1c6bfa951cf65";
+/*getOrderInfo_part*/
+    var token1="3714861a5b5d78f9bd5d25cb25b371a1357";
     var thirdpartyno1="10000000";
        jQuery.ajax({
     		
     		      url:"http://www.52uku.net/webservice.asmx/getOrderInfo?jsoncallback=?",
                    type:"GET",   
                    contentType: "application/json", 
-                   data:{
-                   	
+                   data:{              	
                    	"token":token1,
                     "thirdpartyno":thirdpartyno1
                         },    //这里是要传递的参数，格式为data: "{paraName:paraValue}",
@@ -32,27 +16,27 @@ $(function(){
                    timeout:3000,
                    //beforeSend:function(x) { x.setRequestHeader("Content-Type","application/json; charset=utf-8"); },
                  success: function (result) {
-                 	
-                 	alert("result.status is "+result.STATUS);
-                 	
                  	var orders=$(".orders");
-                     $.each(result,function(index,item){
+                 	/* 测试返回result
+                 	var testStr={"QUERYSTATUS":"OOOKK",
+                            "QUERYMESSAGE":"查询订单成功",
+                            "RECORDNUM":"1",   
+                            "Tickets":[{
+                                         "QRCODE":"0032150844326522","TICKETSTATUS":"4","BUYNUM":"2","CANCELNUM":"1","VERIFIEDNUM":"0","AVAILABLENUM":"1","LOGMESSAGE":"2016-12-2 13:38   预定:2张(太白山滑雪假期套票)___2016-12-2 13:38   购买:2张(太白山滑雪假期套票)___2016-12-4 12:16   验前退票:1张(太白山滑雪假期套票)___"}]};
+                     $.each(test.Tickets,function(index,item){
                      	outputData(orders,item);
                      	});
-
+                  */
                  	if(result.STATUS=="OOOKK"){
                      var orders=$(".orders");
-                     $.each(result,function(index,item){
+                     $.each(result.Tickets,function(index,item){
                      	outputData(orders,item);
                      	});
                        
-                 	}
-
-                 	
-                 
+                 	}                             
                  } ,
                  	Error: function(err){
-                 	alert("error start");
+                 	   alert("getOrderInfo error");
                  }
                  
                  
@@ -87,6 +71,3 @@ $(function(){
                "</div>"
             	);
             	}
-      
-
-});

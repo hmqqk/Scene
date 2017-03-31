@@ -6,9 +6,9 @@ document.write("<script type='text/javascript' src='js/jquery.js'></script>");
 document.write("<script type='text/javascript' src='js/jquery.md5.js'></script>");
 
 jQuery(document).ready(function(){
-	   var token1="3714861a5b5d78f9bd5d25cb25b371a1357";
+	   var token1=getCookie("token");
        var para11="SMARTPARKCLIENT";
-       var para21="224";
+       var para21=getCookie("distributorID");
        var para31="0";
        var para41="1";
 
@@ -78,9 +78,9 @@ jQuery(document).ready(function(){
                             }
 
                             function outputData(container, item) {
+                                /*
                                 var testStr = "<div class=\"scenePart\">" +
                                     "<ul class=\"sceneDMsg\">" +
-                                    "<li class=\"type\"><a href=\"\">" + ticketID[item] + "</a></li>" +
                                     "<li class=\"type\"><a href=\"\">" + ticketTypeName[item] + "</a></li>" +
                                     "<li class=\"explation\">需在" + beginDate[item] + "至" + endDate[item] + "期间完成使用</li>" +
                                     "<li class=\"cost1\">￥" + printPrice[item] + "</li>" +
@@ -89,21 +89,37 @@ jQuery(document).ready(function(){
                                     "<button value=\"\">购买</button>" +
                                     "</li>"+
                                 "</ul>";
+                                */
+                                var testStr="<div class=\"scenePart\">"+
+                                "<div class=\"sceneTitle\">"+
+                                    "<img src=\"images/suzhou.jpg\">"+
+                                    "<div class=\"introduction\">"+
+                                    "<h2>"+ticketTypeName[item]+"<label>&lt;"+distributorName[item]+"&gt;</label></h2>"+
+                                    "<label>特殊说明</label>"+
+                                    "<p>"+toTouristInfo[item]+"</p>"+
+                                "</div>"+
+                                "<p class=\"lowestPrice\">¥<span class=\"myPrice\">"+lowerstPrice[item]+"</span><span class=\"myPriceqi\">起</span></p>"+
+                                    "</div>"+
+                                    "<ul class=\"sceneMsg\">"+
+                                    "<li class=\"type\">票型名称</li>"+
+                                    "<li class=\"explation\">购买说明</li>"+
+                                    "<li class=\"cost1\">门市价</li>"+
+                                    "<li class=\"cost2\">网购价</li>"+
+                                    "</ul>"+
+                                    "<ul class=\"sceneDMsg\">"+
+                                    "<li class=\"type\"><a href=\"\">"+ticketTypeName[item]+"</a></li>"+
+                                    "<li class=\"explation\">需在" + beginDate[item] + "至" + endDate[item] + "期间完成使用<br> 购票"+delayHours[item]+"小时后可验票<br>仅限"+ticketGateRelation[item]+"人使用</li>"+
+                                "<li class=\"cost1\">￥" + printPrice[item] + "</li>"+
+                                    "<li class=\"cost2 red\">￥" + dealPrice[item] + "</li>"+
+                                    "<li class=\"buy\">"+
+                                    "<button value=\"\">购买</button>"+
+                                    "</li>"+
+                                    "</ul>"+
+                                    "</div>"+
+                                    "<div class=\"clear line\"></div>";
                                 container.append(testStr);
                             }
-
-                            var sub = $(".sub");
-                            var add = $(".add");
-                            add.click(function () {
-                                var attrNew = parseInt($(this).siblings("input").attr("value")) + 1;
-                                $(this).siblings("input").attr("value", attrNew);
-                            });
-                            sub.click(function () {
-                                var attrNew = parseInt($(this).siblings("input").attr("value")) - 1 <= 0 ? 1 : parseInt($(this).siblings("input").attr("value")) - 1;
-                                $(this).siblings("input").attr("value", attrNew);
-                            });
-
-
+                        
 
                             var aBuy = $(".buy");
                             var ID;
@@ -171,7 +187,7 @@ jQuery(document).ready(function(){
                                 aBuy[i].onclick = function () {
                                     $(".shopMsg").css("display","block");
                                     ID = ticketID[this.index];
-                                    alert("ID IS WHAT"+ID);
+                                    //alert("ID IS WHAT"+ID);
                                     TicketTypeIDDistributorLevelCode = TicketTypeIDDistributorLevelCode[this.index];
                                     Name = ticketTypeName[this.index];
                                     //touristName = getCookie("UserRealName");
@@ -193,7 +209,7 @@ jQuery(document).ready(function(){
 
                                     $(".orderSure").click(function(){
                                         touristName = $(this).parent(".shopMsg").find(".touristName").attr("value");
-                                        alert("touristName"+touristName);
+                                        //alert("touristName"+touristName);
                                         touristTel = $(this).parent(".shopMsg").find(".touristPhone").attr("value");
                                         num = $(this).parent(".shopMsg").find(".numbers").attr("value");
                                         touristDate = $(this).parent(".shopMsg").find(".touristDate").attr("value");
@@ -205,12 +221,11 @@ jQuery(document).ready(function(){
                                         {
                                             check="0";
                                         }
-                                        alert("testing"+check);
+                                        //alert("testing"+check);
+                                        //alert(TicketTypeIDDistributorLevelCode);
 
                                         book(ID, TicketTypeIDDistributorLevelCode, Name, num, touristName, touristTel, touristDate, check);
                                     });
-
-
 
                                 }
                             }
@@ -225,6 +240,20 @@ jQuery(document).ready(function(){
                    }
 
          });
+    //alert("testing add");
+
+    var sub = $(".sub");
+    var add = $(".add");
+    add.live("click",function () {
+        //alert(1);
+        var attrNew = parseInt($(this).siblings("input").attr("value")) + 1;
+        $(this).siblings("input").attr("value", attrNew);
+    });
+    sub.live("click",function () {
+        var attrNew = parseInt($(this).siblings("input").attr("value")) - 1 <= 0 ? 1 : parseInt($(this).siblings("input").attr("value")) - 1;
+        $(this).siblings("input").attr("value", attrNew);
+    });
+
 })  ;
 
 

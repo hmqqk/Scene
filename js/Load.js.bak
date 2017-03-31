@@ -1,0 +1,78 @@
+
+document.write("<script type='text/javascript' src='js/jquery.js'></script>");
+document.write("<script type='text/javascript' src='js/jquery.md5.js'></script>");
+
+
+ jQuery(document).ready(function(){
+
+
+       jQuery("#login").click(function () {
+           
+       var token1="e8903f430804427cb39d1c6bfa951cf65";
+       var function1="SmartParkLogin";
+       var para11=document.getElementById("username").value;
+       alert(para11);
+       var para21=document.getElementById("lpsd").value;
+       alert(para21);
+       var para31="0";
+       var para41="1";
+       var verifycode1=$.md5(token1+function1+para11+para21+para31+para41);
+
+
+    
+       
+       
+       jQuery.ajax({
+    		
+    		      url:"http://www.52uku.net/webservice.asmx/login?jsoncallback=?",
+                   type:"GET",   
+                   contentType: "application/json", 
+                   data:{
+                   	
+                   	"token":token1,
+                    "function":function1,
+                    "userName":para11,
+                    "password":para21,
+                    "para1":para31,
+                    "para2":para41,
+                    
+                    "verifycode": verifycode1
+                        },    //这里是要传递的参数，格式为data: "{paraName:paraValue}",
+                   dataType: "jsonp",
+                   jsonp:'callback',                          //服务器端获取回调函数名的key，对应后台有$_GET['callback']='getName';callback是默认值
+                   jsonpCallback:'jsonpCallback',                   //回调函数名
+                   timeout:3000,
+                   //beforeSend:function(x) { x.setRequestHeader("Content-Type","application/json; charset=utf-8"); },
+                 success: function (result) {
+                 	
+                 	alert(result.STATUS);
+                     alert(result.MESSAGE);
+
+                 	if(result.STATUS=="OOOKK"){
+
+                       // document.cookie=result.DATASET[0];
+                       //getUserInformation(result);
+                        window.location.href="index.html";
+                 		//alert("密码正确");
+                        //window.close();
+
+                        //window.open("showTickets.html",self);
+                       
+                 		//document.write("<script type='text/html' src='../showTickets.html'></script>");
+                 	}
+
+                 	
+                 
+                 } ,
+                 	Error: function(err){
+                 	alert("ghfgh");
+                 }
+                 
+                 
+            });
+           
+
+
+	
+    })
+})

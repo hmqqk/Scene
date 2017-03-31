@@ -40,24 +40,45 @@
        <form class="orderSearch" method="get">
            <div class="rows">
                <div class="palyerMsg">
-                   <label>票型ID：</label>
-                   <input type="text" class="inputMsg ID">
-               </div>
-               <div class="palyerMsg">
-                   <label>游玩时间：</label>
+                   <div class="orderTypeMsg">
+                       <div class="timeNav">
+                           <input type="text" class="inputMsg on-selected b1" value="下单时间" readonly>
+                           <em class="i-triangle">
+                               <i class="triangle"></i>
+                           </em>
+                       </div>
+                       <ul class="orderType">
+                           <li>
+                               <a href="javascript:void(0)" value="0">下单时间</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="1">游玩时间</a>
+                           </li>
+
+                       </ul>
+
+                   </div>
                    <input type="text" class="inputMsg startTime">
                    -
                    <input type="text" class="inputMsg endTime">
+                   <div id="timeNodeBox" class="timeNodeBox">
+                       <a class="timenode clear ui-link clear" href="javascript:void(0)">清除</a>
+                       <a class="timenode ui-link yestoday" href="javascript:void(0)">昨天</a>
+                       <a class="timenode ui-link today" href="javascript:void(0)">今天</a>
+                       <a class="timenode ui-link week" href="javascript:void(0)">本周</a>
+                       <a class="timenode ui-link prevWeek" href="javascript:void(0)">上周</a>
+                       <a class="timenode ui-link month" href="javascript:void(0)">本月</a>
+                       <a class="timenode ui-link prevMonth" href="javascript:void(0)">上月</a>
+                   </div>
                </div>
-               <input type="button" value="查询" class="search searchbyTime">
            </div>
-           <!--
            <div class="rows">
                <div class="palyerMsg">
-                   <label>订单状态：</label>
+                   <label>票型名：</label>
                    <div class="orderTypeMsg">
                        <div>
-                           <input type="text" class="inputMsg on-selected" value="全部" readonly>
+                           <input type="text" class="inputMsg on-selected b1" value="全部" readonly>
+                           <input type="hidden" value="0" class="realNum rName">
                            <em class="i-triangle">
                                <i class="triangle"></i>
                            </em>
@@ -67,32 +88,88 @@
                                <a href="javascript:void(0)" value="0">全部</a>
                            </li>
                            <li>
-                               <a href="javascript:void(0)" value="1">购票成功</a>
+                               <a href="javascript:void(0)" value="1">76</a>
                            </li>
                            <li>
-                               <a href="javascript:void(0)" value="2">验票完毕</a>
+                               <a href="javascript:void(0)" value="2">77</a>
                            </li>
                            <li>
-                               <a href="javascript:void(0)" value="3">退票完毕</a>
+                               <a href="javascript:void(0)" value="3">78</a>
                            </li>
                            <li>
-                               <a href="javascript:void(0)" value="4">部分退票尚未验票</a>
+                               <a href="javascript:void(0)" value="4">79</a>
                            </li>
                            <li>
-                               <a href="javascript:void(0)" value="5">部分退票部分验票</a>
+                               <a href="javascript:void(0)" value="5">80</a>
                            </li>
                            <li>
-                               <a href="javascript:void(0)" value="6">部分验票成功</a>
+                               <a href="javascript:void(0)" value="6">81</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="7">82</a>
+                           </li>
+                       </ul>
+
+                   </div>
+                   <label>订单状态：</label>
+                   <div class="orderTypeMsg">
+                       <div>
+                           <input type="text" class="inputMsg on-selected b1" value="全部" readonly>
+                           <input type="hidden" value="6" class="realNum rStatus">
+                           <em class="i-triangle">
+                               <i class="triangle"></i>
+                           </em>
+                       </div>
+                       <ul class="orderType">
+                           <li value="666">
+                               <a href="javascript:void(0)" value="6">全部</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="0">购票成功</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="1">验票完毕</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="2">退票完毕</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="3">部分退票尚未验票</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="4">部分退票部分验票</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="5">部分验票成功</a>
                             </li>
                            <li>
-                               <a href="javascript:void(0)" value="7">更复杂的状态</a>
+                               <a href="javascript:void(0)" value="6">更复杂的状态</a>
+                           </li>
+                       </ul>
+
+                   </div>
+                   <label>查询方式：</label>
+                   <div class="orderTypeMsg">
+                       <div>
+                           <input type="text" class="inputMsg on-selected b1" value="详单查询" readonly>
+                           <input type="hidden" value="DETAIL" class="realNum rFlag">
+                           <em class="i-triangle">
+                               <i class="triangle"></i>
+                           </em>
+                       </div>
+                       <ul class="orderType">
+                           <li>
+                               <a href="javascript:void(0)" value="DETAIL">详单查询</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="GROUP">统计查询</a>
                            </li>
                        </ul>
 
                    </div>
                </div>
+               <input type="button" value="查询" class="search searchbyTime">
            </div>
-           -->
            <div class="rows">
                <div class="palyerMsg">
                    <label>游客手机号 / 游客姓名 / 订单号 / 电子票二维码号：</label>
@@ -102,25 +179,165 @@
            </div>
        </form>
        <div class="orderList">
+           <div class="distributorMsg">
+               <div class="distributorType">
+                   <div class="orderTypeMsg">
+                       <div class="orderSelect">
+                           <input type="text" class="inputMsg on-selected b1 b2" value="下单时间" readonly>
+                           <input type="hidden" value="0" class="realNum">
+                           <em class="i-triangle i-triangle2 b3">
+                               <i class="triangle2"></i>
+                           </em>
+                       </div>
+                       <ul class="orderType">
+                           <li>
+                               <a href="javascript:void(0)" value="0">下单时间&nbsp;▼</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="1">下单时间&nbsp;▲</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="2">游玩时间&nbsp;▼</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="3">游玩时间&nbsp;▲</a>
+                           </li>
+                       </ul>
+                   </div>
+                   <label>分销渠道：</label>
+                   <input type="radio" class="channel produceSelect" value="3" name="channelChoices" checked="checked">全部</input>
+                   <input type="radio" class="channel" value="1" name="channelChoices">仅自己</input>
+                   <input type="radio" class="channel" value="2" name="channelChoices">下级分销商</input>
+                   <input class="ranking" value="销售总排行" readonly>
+                   <!--
+                   <label>供销商筛选：</label>
+                   <label class="radioGroup"><input class="gRadio" data-param="gmode" data-val="0" type="radio" name="gmode" checked="">全部</label>
+                   <label class="radioGroup"><input class="gRadio" data-param="gmode" data-val="0" type="radio" name="gmode" checked="">自身</label>
+                   <label class="radioGroup"><input class="gRadio" data-param="gmode" data-val="0" type="radio" name="gmode" checked="">下级分销商</label>
+                   <div class="orderTypeMsg">
+                       <div>
+                           <input type="text" class="inputMsg on-selected b1" value="全部" readonly>
+                           <em class="i-triangle">
+                               <i class="triangle"></i>
+                           </em>
+                       </div>
+                       <ul class="orderType">
+                           <li>
+                               <a href="javascript:void(0)" value="0">全部</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="1">自己销售的产品</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="2">下级分销商</a>
+                           </li>
+                       </ul>
+
+                   </div>
+                   -->
+               </div>
+
+           </div>
            <div class="orders">
+
                <div class="order no-border">
+                   <!--
+                   <div class="orderPreview">
+                       <a href="">下单时间<i class="iconfont"></i></a>
+                       <a href="">游玩时间</a>
+                   </div>
+                   -->
+
                    <ul class="titleName">
                        <li class="name1">
                          <span>
-                            <input type="checkbox" class="idButton">
-                            <a href="" class="allId">电子门票</a>
+                            <a href="" class="allId">票信息</a>
                          </span>
                        </li>
-                       <li class="name3">用户操作信息</li>
-                       <li class="name2">订单状态</li>
-                       <li class="name4">总票数</li>
-                       <li class="name4">已退票数</li>
-                       <li class="name4">可用票数</li>
-                       <li class="name4">已用票数</li>
+                       <li class="name3">游玩人</li>
+                       <li class="name2">分销商</li>
+                       <li class="name4">订单金额/支付方式</li>
+                       <li class="name4">订单状态</li>
                        <li class="name5">操作</li>
                    </ul>
+                   <div class="clear noMenu">
+                       <p class="noText">请输入条件搜索订单</p>
+                   </div>
+                   <div class="menuDiff"></div>
+                   <!--
+                   <div class="menuDsp">
+                       <div class="menuHead">
+                           <div class="menuHead1">
+                               <a class="menuID" href="">订单号：10345833</a>
+                               <a class="menuName" href="">陕西会客厅冰雪大世界</a>
+                               <label class="menuTime">下单时间:2017/03/20 11:37:17</label>
+                           </div>
+                           <ul class="items">
+                               <li class="name1"><a href="" class="singleId">曲江海洋极地公园成人票【预订2小时后刷二维码入园，一个手机号最多预定3张】</a></li>
+                               <li class="name3 blue">
+                                   <span>刘红</span>
+                                   <br>
+                                   <span>18292860000</span>
+                               </li>
+                               <li class="name2 green">西安万邦企业信息咨询有限公司</li>
+                               <li class="name4">
+                                   ¥140*1张=¥140<br>
+                                   授信支付</li>
+                               <li class="name4">购买成功</li><li class="name5 blue mulChoose">
+                               <a href="javascript:void(0)" class="editButton">编辑</a>
+                               <a href="javascript:void(0)" class="againID">重发码</a></li>
+                           </ul>
+                           <div class="clear line"></div>
+                       </div>
+
+                   </div>
+                   -->
                </div>
 
+           </div>
+           <div class="ordersGroup">
+               <div class="gTitle">
+                   <a href="" class="gnumber">票数</a>
+                   <a href="" class="gmoney">金额</a>
+               </div>
+               <ul class="titleName2">
+                   <li class="name1">
+                         <span>
+                            <a href="" class="allId">票型名</a>
+                         </span>
+                   </li>
+                   <li class="name3">已购买总数</li>
+                   <li class="name2">已验票总数</li>
+                   <li class="name4">剩余可用票总数</li>
+                   <li class="name4">操作</li>
+                   <li class="name5"></li>
+               </ul>
+               <!--
+               <ul class="items">
+               <li class="name1">
+                   <span>
+                      <a href="" class="singleId">票型ID</a>
+                   </span>
+              </li>
+              <li class="name3 blue">票型名</li>
+              <li class="name2 green">已购买总数</li>
+              <li class="name4">已验票总数</li>
+              <li class="name4">剩余可用票总数</li>
+           </ul>
+               <div class="clear"></div>
+               <ul class="items">
+                   <li class="name1">
+                   <span>
+                      <a href="" class="singleId">票型ID</a>
+                   </span>
+                   </li>
+                   <li class="name3 blue">票型名</li>
+                   <li class="name2 green">已购买总数</li>
+                   <li class="name4">已验票总数</li>
+                   <li class="name4">剩余可用票总数</li>
+               </ul>
+               <div class="clear line2"></div>
+                -->
            </div>
            <div class="calcleMenu">
                <div class="ticketMsg2"><span>电子门票</span><input type="text" class="basicMsg electName" value=""></div>
@@ -133,6 +350,9 @@
                <div class="ticketMsg2"><span>电话号码</span><input type="text" class="basicMsg phoneNum" value=""></div>
                <button value="" class="orderSure3">确定</button>
                <button value="" class="orderCancle3">取消</button>
+           </div>
+           <div id="container">
+
            </div>
        </div>
        <div class="clear"></div>
@@ -175,5 +395,74 @@
 </body>
 <script type="text/javascript"  src="js/dataone2.js"></script>
 <script type="text/javascript"  src="js/getOrderInfo.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
 <script src="js/base.js"></script>
+<script type="text/javascript">
+
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                margin: [0, 0, 0, 0]
+            },
+            title: {
+                text: 'Browser market shares at a specific website, 2010'
+            },
+            plotArea: {
+                shadow: null,
+                borderWidth: null,
+                backgroundColor: null
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function() {
+                            if (this.y > 5) return this.point.name;
+                        },
+                        color: 'white',
+                        style: {
+                            font: '13px Trebuchet MS, Verdana, sans-serif'
+                        }
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                style: {
+                    left: 'auto',
+                    bottom: 'auto',
+                    right: '50px',
+                    top: '100px'
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Firefox',   10.0],
+                    ['IE',       10.0],
+                    {
+                        name: 'Chrome',
+                        y: 10.0,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    6.0],
+                    ['Opera',     6.0],
+                    ['Others',   6.0]
+                ]
+            }]
+        });
+    });
+
+</script>
 </html>

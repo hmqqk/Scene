@@ -1,0 +1,349 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>index.html</title>
+    <meta http-equiv="keywords" content="">
+    <meta http-equiv="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <script type="text/javascript"  src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript"  src="js/base.js"></script>
+  </head>
+  <body>
+    <div  id="wrap">
+       <header>
+           <h1>
+               <a  href="index.html">
+                   <img  src="images/logo.png"  alt="" />
+               </a>
+           </h1>
+           <div  id="top_search">
+               <div class="search_index">
+                   <input class="searchtext"  type="text" name="search" value="搜一搜"/>
+                   <input class="submit_bt" type="text" value="搜索"  name="submit_bt"/>
+               </div>
+           </div>
+           <div  id="shop_user">
+               <div  class="box_shop">
+                   <!-- /justIT/jsp/user/cart.jsp -->
+               </div>
+               <div  class="box_user box_shop_user">
+                   <div>
+                       <a  href="login.html">登录</a>
+                       <span>|</span>
+                       <a  href="register.html">注册</a>
+                   </div>
+               </div>
+           </div>
+       </header>
+       <!--end  header-->
+       <div id="banner">
+          <div class="banner_menu">
+          <ul>
+              <li><a href="">首页</a></li>
+              <li><a href="scene.html">风景区</a></li>
+              <li><a href="order.html">订单管理</a></li>
+              <li><a href="">财务管理</a></li>
+              <li><a href="">个人中心</a></li>
+              <li><a href="">平台通知</a></li>
+          </ul>
+      </div>
+          <div id="banner_wrap">
+            <div  class="banner_bn">
+            <a class="overhover_bn" href="#"></a>
+            <a  href="#"></a>
+            <a  href="#"></a>
+         </div>
+            <ul  class="banner_imges" >
+              <li>
+                  <a  href="">
+                      <img class="pic" src="images/banner_02.jpg">
+                  </a>
+              </li>
+          </ul>
+      </div>
+          <ul class="nav_tuijian">
+          <li>
+              <h3>精选推荐</h3>
+          </li>
+          <li>
+              <h3 >热门景点</h3>
+              <a  href="">野生动物园</a>
+              <a  href="">海洋世界</a>
+              <a  href="">迪士尼乐园</a>
+              <a  href="">东方明珠</a>
+              <a  href="">方特</a>
+              <a  href="">野生动物园</a>
+              <a  href="">海洋世界</a>
+              <a  href="">迪士尼乐园</a>
+              <a  href="">东方明珠</a>
+              <a  href="">方特</a>
+          </li>
+          <li class="no-border">
+              <h3 >热门城市</h3>
+              <a  href="">北京</a>
+              <a  href="">深圳</a>
+              <a  href="">上海</a>
+              <a  href="">苏州</a>
+              <a  href="">杭州</a>
+              <a  href="">西安</a>
+              <a  href="">大连</a>
+              <a  href="">广东</a>
+              <a  href="">广州</a>
+              <a  href="">成都</a>
+          </li>
+      </ul>
+       </div>
+       <!--end banner-->
+       <div  class="containter">
+           <div  class="display_bg1">
+               <div class="displayName">
+                   <h3 class="title">今日推荐</h3>
+                   <a href="" class="more">更多>></a>
+               </div>
+               <ul class="display_scenes clear">
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="scene_detail.html>上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+               </ul>
+           </div>
+           <div  class="display_bg1">
+               <div class="displayName">
+                   <h3 class="title">人气景区</h3>
+                   <a href="" class="more">更多>></a>
+               </div>
+               <ul class="display_scenes clear">
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+               </ul>
+
+
+           </div>
+           <div  class="display_bg1">
+               <div class="displayName">
+                   <h3 class="title">猜你喜欢</h3>
+                   <a href="" class="more">更多>></a>
+               </div>
+               <ul class="display_scenes clear">
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li class="no-right-border">
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+                   <li>
+                       <img src="images/list01.jpg">
+                       <a href="">上海迪士尼乐园</a>
+                       <br>
+                       <span class="brief_intr">上海迪士尼乐园相关介绍</span>
+                       <br>
+                       <span class="red">￥666</span>
+                   </li>
+               </ul>
+
+
+           </div>
+       </div>
+       <!--end containter-->
+       <div  class="bg_w clear">
+      <footer  class="footer ">
+          <p  class="flink">
+              <a  href=""  class="fstrong">所有景区</a>
+              <a  href=""> 精选推荐</a>
+              <a  href="">今日推荐 </a>
+              <a  href="">人气景区</a>
+              <a  href="">猜你喜欢</a>
+              <a  href=""  class="fstrong">关于我们</a>
+              <a  href=""> 关于网站</a>
+              <a  href="">联系我们</a>
+              <a  href="">  加入我们</a>
+              <a  href=""  class="fstrong">用户帮助</a>
+              <a  href=""> 新手指南</a>
+              <a  href="">网站地图</a>
+              <a  href=""> 意见反馈</a>
+          </p>
+          <p>
+              Copyright &copy;2013-2015 zhaopiao.net 版权所有 沪ICP备14014674号-3
+          </p>
+          <p>
+              客服电话：800-920-8820  技术支持：xxxxxxxx
+          </p>
+      </footer>
+   </div>
+       <!--end footer-->
+    </div>
+    <!--end wrap-->
+  </body>
+ </html>

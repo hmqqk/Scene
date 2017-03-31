@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>order</title>
+    <link rel='stylesheet' href='css/base.css'>
+    <script type="text/javascript"  src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript"  src="js/getOrderInfo.js"></script>
+</head>
+<body id="wrap">
+   <header>
+    <h1>
+        <a  href="index.html">
+            <img  src="images/logo.png"  alt="" />
+        </a>
+    </h1>
+    <div  id="top_search">
+        <div class="search_index">
+            <input class="searchtext"  type="text" name="search" value="搜一搜"/>
+            <input class="submit_bt" type="text" value="搜索"  name="submit_bt"/>
+        </div>
+    </div>
+    <div  id="shop_user">
+        <div  class="box_shop">
+            <!-- /justIT/jsp/user/cart.jsp -->
+        </div>
+        <div  class="box_user box_shop_user">
+            <div>
+                <a  href="login.html">登录</a>
+                <span>|</span>
+                <a  href="register.html">注册</a>
+            </div>
+        </div>
+    </div>
+</header>
+   <div class="content">
+       <form class="orderSearch" method="get">
+           <div class="rows">
+               <div class="palyerMsg">
+                   <label>游玩人姓名：</label>
+                   <input type="text" class="inputMsg">
+               </div>
+               <div class="palyerMsg">
+                   <label>游玩人手机：</label>
+                   <input type="text" class="inputMsg">
+               </div>
+               <div class="palyerMsg">
+                   <label>游玩时间：</label>
+                   <input type="text" class="inputMsg">
+                   -
+                   <input type="text" class="inputMsg">
+               </div>
+           </div>
+           <div class="rows">
+               <div class="palyerMsg">
+                   <label>订单状态：</label>
+                   <div class="orderTypeMsg">
+                       <div>
+                           <input type="text" class="inputMsg on-selected">
+                           <em class="i-triangle">
+                               <i class="triangle"></i>
+                           </em>
+                       </div>
+                       <ul class="orderType">
+                           <li class="on">全部</li>
+                           <li class="on">待支付</li>
+                           <li class="on">已支付</li>
+                           <li class="on">已出码</li>
+                           <li class="on">已取消</li>
+                           <li class="on">退票中</li>
+                           <li class="on">退票失败</li>
+                           <li class="on">退票成功</li>
+                           <li class="on">投诉中</li>
+                           <li class="on">处理中</li>
+                           <li class="on">未出码</li>
+                           <li class="on">已完成</li>
+                       </ul>
+
+                   </div>
+               </div>
+           </div>
+           <div class="rows">
+               <div class="palyerMsg">
+                   <label>订单号：</label>
+                   <input type="text" class="inputMsg">
+               </div>
+               <div class="palyerMsg">
+                   <label>景点名称：</label>
+                   <input type="text" class="inputMsg">
+               </div>
+               <div class="palyerMsg">
+                   <label>订单时间：</label>
+                   <input type="text" class="inputMsg">
+               </div>
+               <input type="button" value="查询" class="search">
+           </div>
+       </form>
+       <div class="orderList">
+           <div class="orders">
+               <div class="order no-border">
+                   <ul class="titleName">
+                       <li class="name1">
+                         <span>
+                            <input type="checkbox" class="idButton">
+                            <a href="" class="allId">订单号</a>
+                         </span>
+                       </li>
+                       <li class="name2">用户操作信息</li>
+                       <li class="name3">景区名称</li>
+                       <li class="name2">订单状态</li>
+                       <li class="name1">游玩人</li>
+                       <li class="name2">游玩时间</li>
+                       <li class="name4">票数</li>
+                       <li class="name4">订单金额</li>
+                       <li class="name5">操作</li>
+                   </ul>
+               </div>
+               
+               <!--
+               <div class="order clear">
+                   <ul class="items">
+                       <li class="name1">
+                         <span>
+                            <input type="checkbox">
+                            <a href="" class="singleId">3601912839</a>
+                         </span>
+                       </li>
+                       <li class="name2">2015-07-04 22:12:08</li>
+                       <li class="name3 blue">曲江海洋极地公园成人票【预订2小时后刷二维码入园，一个手机号最多预定3张】</li>
+                       <li class="name2 green">订单完成</li>
+                       <li class="name1">
+                           <em>刘红</em>
+                           <br>
+                           <em>18200000000</em>
+                       </li>
+                       <li class="name2">2015-07-05</li>
+                       <li class="name4">3</li>
+                       <li class="name4 red">￥360.00</li>
+                       <li class="name5 blue">
+                           <a href="">订单详情</a>
+                           <a href="">反馈未出码</a>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+           -->
+
+       </div>
+       <div class="clear"></div>
+       <div  class="link_page">
+           <a  href="#" class="open">1</a>
+           <a  href="#">2</a>
+           <a  href="#">3</a>
+           <a  href="#">4</a>
+           <span  class="moremark">....</span>
+           <a  href="#">></a>
+           <input  class="empty" value="">
+           <a  href="#">跳转</a>
+       </div>
+   </div>
+   <div  class="bg_w">
+       <footer  class="footer ">
+           <p  class="flink">
+               <a  href=""  class="fstrong">所有景区</a>
+               <a  href=""> 精选推荐</a>
+               <a  href="">今日推荐 </a>
+               <a  href="">人气景区</a>
+               <a  href="">猜你喜欢</a>
+               <a  href=""  class="fstrong">关于我们</a>
+               <a  href=""> 关于网站</a>
+               <a  href="">联系我们</a>
+               <a  href="">  加入我们</a>
+               <a  href=""  class="fstrong">用户帮助</a>
+               <a  href=""> 新手指南</a>
+               <a  href="">网站地图</a>
+               <a  href=""> 意见反馈</a>
+           </p>
+           <p>
+               Copyright &copy;2013-2015 zhaopiao.net 版权所有 沪ICP备14014674号-3
+           </p>
+           <p>
+               客服电话：800-920-8820  技术支持：xxxxxxxx
+           </p>
+       </footer>
+   </div>
+</body>
+</html>

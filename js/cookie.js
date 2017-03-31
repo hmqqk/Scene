@@ -2,7 +2,6 @@
  * Created by Administrator on 2016/12/2 0002.*/
 
 function getUserInformation(Data) {
-	alert(Data);
     setCookie("UserID",Data.DATASET[0].UserID);
     setCookie("UserName",Data.DATASET[0].UserName);
     setCookie('UserPassword',Data.DATASET[0].UserPassword);
@@ -12,14 +11,12 @@ function getUserInformation(Data) {
     setCookie('RegisterTimeD',Data.DATASET[0].RegisteTime);
     setCookie('Birthday',Data.DATASET[0].Birthday);
     setCookie('Sex',Data.DATASET[0].Sex);
+    setCookie('token',Data.DATASET[0].Token);
+    setCookie('distributorID',Data.DATASET[0].DistributorID);
+    setCookie('distributorIDCode',Data.DATASET[0].DistributorIDCode);
 }
 function  setCookie(name,value) {
-	//alert("setCookie");
-
    document.cookie=name+'='+value;
-   alert(document.cookie);
-
-
 }
 function getCookie(name) {
     {

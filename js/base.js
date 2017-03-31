@@ -81,7 +81,7 @@
     /*logout operator*/
 
     $(".i-triangle").click(function(){
-        $(".orderType").css("display","block");
+        $(this).parents('.orderTypeMsg').find('.orderType').css("display","block");
     });
     $(".orderType").hover(function(){
         $(this).css("display","block");
@@ -89,7 +89,10 @@
         $(this).css("display","none");
     });
     $(".orderType li").click(function(){
-        $(this).parent(".orderType").siblings("div").find("input").attr("value",$(this).find("a").text());
+        $(this).parent(".orderType").siblings("div").find("input.inputMsg").attr("value",$(this).find("a").text());
+        $(this).parent(".orderType").siblings("div").find(".realNum").attr("value",$(this).find("a").attr("value"));
+        //alert($(this).find("a").attr("value"));
+        //alert($(this).parent(".orderType").siblings("div").find(".realNum").attr("value"));
     });
 
 
