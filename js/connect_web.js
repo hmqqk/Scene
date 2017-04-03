@@ -2,7 +2,7 @@
 /*
  * 这个JS文件是用来连接webservice;
  */
-document.write("<script type='text/javascript' src='js/jquery.js'></script>");
+
 document.write("<script type='text/javascript' src='js/jquery.md5.js'></script>");
 
 jQuery(document).ready(function(){
@@ -21,7 +21,6 @@ jQuery(document).ready(function(){
     var dealPrice=new Array(100);
     var lowerstPrice=new Array(100);
     var ticketTypeThatName=new Array(100);
-   // var contractDescrip=new Array(100);
     var delayHours=new Array(100);
     var beginDate=new Array(100);
     var endDate=new Array(100);
@@ -78,18 +77,6 @@ jQuery(document).ready(function(){
                             }
 
                             function outputData(container, item) {
-                                /*
-                                var testStr = "<div class=\"scenePart\">" +
-                                    "<ul class=\"sceneDMsg\">" +
-                                    "<li class=\"type\"><a href=\"\">" + ticketTypeName[item] + "</a></li>" +
-                                    "<li class=\"explation\">需在" + beginDate[item] + "至" + endDate[item] + "期间完成使用</li>" +
-                                    "<li class=\"cost1\">￥" + printPrice[item] + "</li>" +
-                                    "<li class=\"cost2 red\">￥" + dealPrice[item] + "</li>" +
-                                    "<li class=\"buy\">" +
-                                    "<button value=\"\">购买</button>" +
-                                    "</li>"+
-                                "</ul>";
-                                */
                                 var testStr="<div class=\"scenePart\">"+
                                 "<div class=\"sceneTitle\">"+
                                     "<img src=\"images/suzhou.jpg\">"+
@@ -130,19 +117,8 @@ jQuery(document).ready(function(){
                             var touristDate;
                             var num;
                             var check;
-                           /*
-                           $(".buy").click(function(){
-                               alert(1);
-                               if($(".shopMsg").attr("display")=="block"){
-                                   $(".shopMsg").attr("display","none");
-                                   $(this).parent(".sceneDMsg").siblings(".shopMsg");
-                               }
-                               else
-                                   $(this).parent(".sceneDMsg").siblings(".shopMsg");
 
-                           });
-                           */
-                        $(".touristDate").live("click",function(){
+                        $(".touristDate").on("click",function(){
                             setday(this);
                         });
 
@@ -157,7 +133,7 @@ jQuery(document).ready(function(){
                             "</div>"+
                             "<div class=\"ticketMsg\">"+
                             "<span>游玩日期</span>"+
-                            "<input type=\"text\" class=\"basicMsg touristDate\" value=\"\">"+
+                            "<input type=\"text\" class=\"basicMsg touristDate\" value=\"\" placeholder = '如2017-04-03'>"+
                             "</div>"+
                             "<div class=\"ticketMsg chooseMsg\">"+
                             "<span>短信通知</span>"+
@@ -187,33 +163,20 @@ jQuery(document).ready(function(){
                                 aBuy[i].onclick = function () {
                                     $(".shopMsg").css("display","block");
                                     ID = ticketID[this.index];
-                                    //alert("ID IS WHAT"+ID);
                                     TicketTypeIDDistributorLevelCode = TicketTypeIDDistributorLevelCode[this.index];
                                     Name = ticketTypeName[this.index];
-                                    //touristName = getCookie("UserRealName");
-                                    //touristTel = getCookie("UserMobile");
-                                    //num = parseInt($(".numbers").attr("value"));
-                                    //alert(check);
-
-
-                                    //var container1=$(this).parent('.sceneDMsg').parent(".scenePart");
-                                    //container1.css("height","163px");
-                                    //var container2=$(this).parent(".sceneDMsg").siblings(".shopMsg");
-                                    //alert(container2);
-                                    //container2.fadeIn();
                                     $(".orderCancle").click(function(){
                                         $(".shopMsg").css("display","none");
                                     });
 
 
 
-                                    $(".orderSure").click(function(){
-                                        touristName = $(this).parent(".shopMsg").find(".touristName").attr("value");
-                                        //alert("touristName"+touristName);
-                                        touristTel = $(this).parent(".shopMsg").find(".touristPhone").attr("value");
-                                        num = $(this).parent(".shopMsg").find(".numbers").attr("value");
-                                        touristDate = $(this).parent(".shopMsg").find(".touristDate").attr("value");
-                                        if($(this).parent(".shopMsg").find("#yes").attr("checked")==true)
+                                    $("body").on('click','.orderSure',function(){
+                                        touristName = $(this).parent(".shopMsg").find(".touristName").val();
+                                        touristTel = $(this).parent(".shopMsg").find(".touristPhone").val();
+                                        num = $(this).parent(".shopMsg").find(".numbers").val();
+                                        touristDate = $(this).parent(".shopMsg").find(".touristDate").val();
+                                        if($(this).parent(".shopMsg").find("#yes").attr("checked")=="checked")
                                         {
                                             check="1";
                                         }
@@ -221,9 +184,7 @@ jQuery(document).ready(function(){
                                         {
                                             check="0";
                                         }
-                                        //alert("testing"+check);
-                                        //alert(TicketTypeIDDistributorLevelCode);
-
+                                        //alert("check"+check);
                                         book(ID, TicketTypeIDDistributorLevelCode, Name, num, touristName, touristTel, touristDate, check);
                                     });
 
@@ -244,12 +205,12 @@ jQuery(document).ready(function(){
 
     var sub = $(".sub");
     var add = $(".add");
-    add.live("click",function () {
+    $("body").on("click",'.add',function () {
         //alert(1);
         var attrNew = parseInt($(this).siblings("input").attr("value")) + 1;
         $(this).siblings("input").attr("value", attrNew);
     });
-    sub.live("click",function () {
+    $("body").on("click",'.sub',function () {
         var attrNew = parseInt($(this).siblings("input").attr("value")) - 1 <= 0 ? 1 : parseInt($(this).siblings("input").attr("value")) - 1;
         $(this).siblings("input").attr("value", attrNew);
     });

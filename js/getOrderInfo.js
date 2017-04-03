@@ -1,7 +1,7 @@
 /*getOrderInfo_part*/
-document.write("<script type='text/javascript' src='js/jquery.js'></script>");
-document.write("<script type='text/javascript' src='js/jquery.md5.js'></script>");
 
+document.write("<script type='text/javascript' src='js/jquery.md5.js'></script>");
+document.write("<script type='text/javascript' src='js/jquery-2.1.1.min.js'></script>");
 jQuery(document).ready(function() {
     var channelChoice1;
     var channelChoices=$(".channel");
@@ -10,7 +10,6 @@ jQuery(document).ready(function() {
     var distributorIDCode1 = getCookie("distributorIDCode");
     var code1 = channelChoice1;
     var beginDate1;
-    //alert(beginDate1);
     var endDate1;
     var ticketType1;
     var groupOrDetailFlag1;
@@ -20,61 +19,6 @@ jQuery(document).ready(function() {
     var avaliablenum1;
     var content2D1;
     var phoneNumber1;
-
-    /*
-    jQuery.ajax({
-        url:"http://www.52uku.net/webservice.asmx/getOrderByComplexQuery?jsoncallback=?",
-        type:"GET",
-        contentType: "application/json",
-        data:{
-            "token":token1,
-            "distributorIDCode":distributorIDCode1,
-            "beginDate":"2016-03-03",
-            "endDate":"2017-03-31",
-            "ticketTypeID":"76",
-            "parkID":0.000,
-            "operatorID":0,
-            "salerID":0,
-            "subDistributorInFlag":0,
-            "groupOrDetailFlag":"DETAIL",
-            "orderState":0
-        },
-        dataType: "jsonp",
-        jsonp:'callback',
-        jsonpCallback:'jsonpCallback',
-        timeout:3000,
-        success: function (result) {
-            alert("ok吗");
-            if(result.STATUS=="OOOKK"){
-                alert("查询成功");
-                var orders = $(".order");
-                $(".menuDsp").remove();
-                $.each(result.Tickets, function (index, item) {
-                    outputData(orders, item);
-                });
-            }
-        } ,
-        error: function(err){
-            alert("查询失败");
-        }
-    });
-    */
-
-    /*
-     "<div class=\"order no-order\">" +
-     "<ul class=\"titleName\">"+
-     "<li class=\"name1\">"+
-     "<span>"+
-     "<a href=\"\" class=\"allId\">票信息</a>"+
-     "</span>"+
-     "</li>"+
-     "<li class=\"name3\">游玩人</li>"+
-     "<li class=\"name2\">分销商</li>"+
-     "<li class=\"name4\">订单金额/支付方式</li>"+
-     "<li class=\"name4\">订单状态</li>"+
-     "<li class=\"name5\">操作</li>"+
-     "</ul>"+
-    * */
     function outputData(container, item) {
         var str= "<div class=\"menuDsp\">"+
         "<div class=\"menuHead\">"+
@@ -121,7 +65,7 @@ jQuery(document).ready(function() {
 
         container.append(str);
     }
-    function outputData2(container,item){
+    function outputData2(container,item,sumBuyTicketNum,sumTicketVerified,sumTicketAvailable){
         /*
          "<div class=\"ordersGroup\">"+
          "<div class=\"gTitle\">"+
@@ -142,21 +86,37 @@ jQuery(document).ready(function() {
          "</ul>"+
         * */
         var str= "<ul class=\"items\">"+
-            "<li class=\"name1\">"+
+            "<li class=\"name8\">"+
             "<span>"+
-            "<a href=\"\" class=\"singleId\">"+item.TicketTypeName+"</a>"+
+            "<a href=\"\" class=\"singleId\">"+item.DistributorName+"</a>"+
             "</span>"+
             "</li>"+
-            "<li class=\"name3 blue\">"+item.BuyTicketNum+"</li>"+
-            "<li class=\"name2 green\">"+item.TicketVerified+"</li>"+
-            "<li class=\"name4\">"+item.TicketAvailable+"</li>"+
-            "<li class=\"name4 red pointer detailMsg\">详情</li>"+
-            "<li class=\"name5\"></li>"+
+            "<li class=\"name6 blue\">"+sumBuyTicketNum+"</li>"+
+            "<li class=\"name6 green\">"+sumTicketVerified+"</li>"+
+            "<li class=\"name6\">"+sumTicketAvailable+"</li>"+
+            "<li class=\"name6 red pointer\"></li>"+
+            "<li class=\"name7\"></li>"+
             "</ul>"+
             "<div class=\"clear\"></div> ";
         container.append(str);
     }
-
+    function outputData3(container,item,sumBuyTicketNum,sumTicketVerified,sumTicketAvailable){
+        var str= "<ul class=\"items\">"+
+            "<li class=\"name8\">"+
+            "<span>"+
+            "<a href=\"\" class=\"singleIdHidden\">"+item.Info[0].TicketTypeID+"</a>"+
+            "<a href=\"\" class=\"singleId\">"+item.TicketTypeName+"</a>"+
+            "</span>"+
+            "</li>"+
+            "<li class=\"name6 blue\">"+sumBuyTicketNum+"</li>"+
+            "<li class=\"name6 green\">"+sumTicketVerified+"</li>"+
+            "<li class=\"name6\">"+sumTicketAvailable+"</li>"+
+            "<li class=\"name6 red pointer\"><a class=\"detailMsg\" href=\"javascript:void(0)\">详情</a></li>"+
+            "<li class=\"name7\"></li>"+
+            "</ul>"+
+            "<div class=\"clear\"></div> ";
+        container.append(str);
+    }
     function getTicketstatus(i){
         switch (i)
         {
@@ -200,7 +160,6 @@ jQuery(document).ready(function() {
         }
 
     }
-
     function getTicketscode(i){
         switch (i)
         {
@@ -210,27 +169,20 @@ jQuery(document).ready(function() {
         }
 
     }
-    $(".editButton").live("click",function(){
+
+    $("body").on("click",".editButton",function(){
         ticketID=$(this).parent("li").parent(".items").siblings(".menuHead1").find(".content2D").text();
-        //alert(ticketID);
         $(".calcleMenu").css("display","block");
         $(".electName").attr("value",ticketID);
 
     });
 
-    $(".orderCancle2").live("click",function(){
+    $("body").on("click",".orderCancle2",function(){
         $(".calcleMenu").css("display","none");
 
     });
-    $(".orderSure2").live("click",function(){
-        alert("cancelTickets");
-        //var content2D1=$(this).parents(".menuHead").find(".menuName span").text();
-        //alert("contentID"+content2D1);
-        //alert($(this).siblings(".ticketMsg2").find(".singleId").val());
-
+    $("body").on("click",".orderSure2",function(){
         avaliablenum1=parseInt($(".cancleNum").val());
-        alert("avaliablenum1==",avaliablenum1);
-        alert("咋不执行呢");
         jQuery.ajax({
             url:"http://www.52uku.net/webservice.asmx/addWithdrawTicket?jsoncallback=?",
             type:"GET",
@@ -247,7 +199,6 @@ jQuery(document).ready(function() {
             jsonpCallback:'jsonpCallback',
             timeout:3000,
             success: function (result) {
-                alert("result.Message"+result.MESSAGE);
                 if(result.STATUS=="OOOKK"){
                     alert("退票成功");
                     $(".calcleMenu").css("display","none");
@@ -258,15 +209,8 @@ jQuery(document).ready(function() {
             }
         });
     });
-    $(".orderAdd2").live("click",function(){
-        alert("cancelTickets");
-        //var content2D1=$(this).parents(".menuHead").find(".menuName span").text();
-        //alert("contentID"+content2D1);
-        //alert($(this).siblings(".ticketMsg2").find(".singleId").val());
-
+    $("body").on("click",".orderAdd2",function(){
         avaliablenum1=parseInt($(".cancleNum").val());
-        alert("avaliablenum1==",avaliablenum1);
-        alert("咋不执行呢");
         jQuery.ajax({
             url:"http://www.52uku.net/webservice.asmx/addWithdrawTicket?jsoncallback=?",
             type:"GET",
@@ -283,7 +227,6 @@ jQuery(document).ready(function() {
             jsonpCallback:'jsonpCallback',
             timeout:3000,
             success: function (result) {
-                alert("result.Message"+result.MESSAGE);
                 if(result.STATUS=="OOOKK"){
                     alert("新增成功");
                     $(".calcleMenu").css("display","none");
@@ -295,27 +238,19 @@ jQuery(document).ready(function() {
         });
     });
 
-    $(".startTime,.endTime").click(function(){
-        setday(this);
-    });
-
-
-
     $(".searchbyTime").click(function(){
 
         for(var i=0;i<channelChoices.length;i++){
             if(channelChoices[i].checked == true){
                 channelChoice1=channelChoices[i].value;
-                alert("channelChoice1"+channelChoice1);subDistributorInFlag1=channelChoice1;
+                subDistributorInFlag1=channelChoice1;
 
             }
         }
         beginDate1=$(".startTime").val();
         endDate1=$(".endTime").val();
         ticketType1=$(".rName").val();
-        //alert($(".rFlag").val());
         var groupOrDetailFlag1=$(".rFlag").val();
-        //alert("groupOrDetailFlag1"+groupOrDetailFlag1);
         orderState1=$(".rStatus").val();
         //alert("subDistributorInFlag1"+channelChoice1);
         jQuery.ajax({
@@ -324,7 +259,7 @@ jQuery(document).ready(function() {
             contentType: "application/json",
             data:{
                 "token":token1,
-                "distributorIDCode":"AEP",
+                "distributorIDCode":distributorIDCode1,
                 "beginDate":beginDate1,
                 "endDate":endDate1,
                 "ticketTypeID":0,
@@ -343,7 +278,7 @@ jQuery(document).ready(function() {
                // alert("ok吗");
                 if (result.STATUS == "OOOKK") {
 
-                    alert("查询成功");
+                    //alert("查询成功");
                     if (groupOrDetailFlag1 == "DETAIL") {
                         var orders = $(".menuDiff");
                         $(".orderSelect").show();
@@ -351,6 +286,9 @@ jQuery(document).ready(function() {
                         $(".titleName").show();
                         $(".menuDiff").empty();
                         $(".noMenu").hide();
+                        $("#calcleMenu3").hide();
+                        $("#container").hide();
+
                         if (result.RECORDNUM > 0) {
                             $.each(result.Tickets, function (index, item) {
                                 outputData(orders, item);
@@ -360,7 +298,18 @@ jQuery(document).ready(function() {
                             $(".noMenu").show().find(".noText").text("未查询到订单");
                         }
                     }
-                        if (groupOrDetailFlag1 == "GROUP") {
+                    if (groupOrDetailFlag1 == "GroupByDistributorName") {
+                        $(".orderSelect").hide();
+                        $(".ordersGroup").show();
+                        var orders = $(".ordersGroup");
+                        $(".titleName").hide();
+                        $(".menuDiff").empty();
+                        $(".items").remove();
+                        $(".titleName2").show();
+                        $(".noMenu").hide();
+                        $("#calcleMenu3").hide();
+                        $("#container").show();
+                        if (result.RECORDNUM > 0) {
                             $(".orderSelect").hide();
                             $(".ordersGroup").show();
                             var orders = $(".ordersGroup");
@@ -369,15 +318,155 @@ jQuery(document).ready(function() {
                             $(".items").remove();
                             $(".titleName2").show();
                             $(".noMenu").hide();
-                            if (result.RECORDNUM > 0) {
-                                $.each(result.Tickets, function (index, item) {
+                            var sumBuyTicketNum = [];
+                            var sumTicketAvailable=[];
+                            var sumTicketVerified=[];
+                            var DistributorName=[];
+                            var sum=0;
+                            var sum_DistributorName=[];
+                            $.each(result.Tickets, function (index, item) {
                                     //alert("outputData2");
-                                    outputData2(orders, item);
-                                });
-                            } else {
-                                $(".noMenu").show().find(".noText").text("未查询到订单");
+                                    sumBuyTicketNum[index]=0;
+                                    sumTicketAvailable[index]=0;
+                                    sumTicketVerified[index]=0;
+                                    for(var i=0;i<item.Info.length;i++){
+                                        //alert(item.Info[i].BuyTicketNum);
+                                        sumBuyTicketNum[index] += parseInt(item.Info[i].BuyTicketNum);
+                                        sumTicketAvailable[index] += parseInt(item.Info[i].TicketAvailable);
+                                        sumTicketVerified[index] += parseInt(item.Info[i].TicketVerified);
+                                        //alert(sumTicketVerified[index]);
+                                    }
+                                    sum+=(sumBuyTicketNum[index]==0)?1:sumBuyTicketNum[index];
+                                    DistributorName[index]=item.DistributorName;
+                                    //alert("DistributorName[index]"+DistributorName[index]);
+
+
+                                    //alert("index="+index);
+                                    //alert(sum[index]);
+
+
+
+                                    //alert("item="+item);
+                                    //alert("sum[4]="+sum[4]);
+
+
+
+                                    //alert("item"+itemInfo.BuyTicketNum);
+                                    //alert("outputData2");
+                                    //outputData2(orders, itemInfo);
+                                    //var sum=0;
+                                    //sum+=itemInfo.BuyTicketNum;
+                                    //alert("sum[3]"+sum[3]);
+                                    outputData2(orders, item,sumBuyTicketNum[index],sumTicketAvailable[index],sumTicketVerified[index]);
+                                }
+
+                            );
+
+                            for(var j=0;j<DistributorName.length;j++){
+                                sum_DistributorName[j]=((sumBuyTicketNum[j]==0?1:sumBuyTicketNum[j])/sum*100).toFixed(1);
+                                // alert("sum_DistributorName[j]"+sum_DistributorName[j]);
                             }
+                            var json=[];
+                            json.push(["其它",0.1]);
+                            for(var p=0;p<sum_DistributorName.length;p++){
+                                json.push([DistributorName[p],parseInt(sum_DistributorName[p])]);
+                            }
+
+                            var chart;
+                            chart = new Highcharts.Chart({
+                                chart: {
+                                    renderTo: 'container',
+                                    margin: [40, 0, 0, 0]
+                                },
+                                title: {
+                                    text: '票务通票型销售排行'
+                                },
+                                plotArea: {
+                                    shadow: null,
+                                    borderWidth: null,
+                                    backgroundColor: null
+                                },
+                                tooltip: {
+                                    formatter: function() {
+                                        return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                                    }
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        dataLabels: {
+                                            enabled: true,
+                                            formatter: function() {
+                                                if (this.y > 5) return this.point.name;
+                                            },
+                                            color: 'white',
+                                            style: {
+                                                font: '13px Trebuchet MS, Verdana, sans-serif'
+                                            }
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    layout: 'vertical',
+                                    style: {
+                                        left: 'auto',
+                                        bottom: 'auto',
+                                        right: '100px',
+                                        top: '100px'
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: 'chart',
+                                    data: json
+                                }]
+                            });
+                        } else {
+                            $(".noMenu").show().find(".noText").text("未查询到订单");
                         }
+                    }
+                    if (groupOrDetailFlag1 == "GroupByTicketTypeName") {
+                        $(".orderSelect").hide();
+                        $(".ordersGroup").show();
+                        var orders = $(".ordersGroup");
+                        $(".titleName").hide();
+                        $(".menuDiff").empty();
+                        $(".items").remove();
+                        $(".titleName2").show();
+                        $(".noMenu").hide();
+                        $("#container").hide();
+                        if (result.RECORDNUM > 0) {
+                            var sumBuyTicketNum = [];
+                            var sumTicketAvailable=[];
+                            var sumTicketVerified=[];
+                            var DistributorName=[];
+                            var sum=0;
+                            var sum_DistributorName=[];
+                            var indexDistributorName=[];
+                            $.each(result.Tickets, function (index, item) {
+                                //alert("outputData2");
+                                sumBuyTicketNum[index]=0;
+                                sumTicketAvailable[index]=0;
+                                sumTicketVerified[index]=0;
+                                for(var i=0;i<item.Info.length;i++){
+                                    //alert(item.Info[i].BuyTicketNum);
+                                    sumBuyTicketNum[index] += parseInt(item.Info[i].BuyTicketNum);
+                                    sumTicketAvailable[index] += parseInt(item.Info[i].TicketAvailable);
+                                    sumTicketVerified[index] += parseInt(item.Info[i].TicketVerified);
+                                }
+                                sum+=(sumBuyTicketNum[index]>0)?sumBuyTicketNum[index]:-sumBuyTicketNum[index];
+                                DistributorName[index]=item.Info[0].TicketTypeName;
+                                outputData3(orders, item,sumBuyTicketNum[index],sumTicketAvailable[index],sumTicketVerified[index]);
+                            }
+
+                            );
+
+                        } else {
+                            $(".noMenu").show().find(".noText").text("未查询到订单");
+
+                        }
+                    }
 
                 }
             },
@@ -392,10 +481,9 @@ jQuery(document).ready(function() {
                 channelChoice1=channelChoices[i].value;
             }
         }
-        alert("searchbyMultiple");
-        distributorIDCode1="AEP";
+
+        distributorIDCode1=getCookie("distributorIDCode");
         code1=channelChoice1;
-        alert("code1"+code1);
         querystr1=$(".multiple").val();
 
         jQuery.ajax({
@@ -406,7 +494,7 @@ jQuery(document).ready(function() {
             data:{
                 "token":token1,
                 "querystr":querystr1,
-                "distributorIDCode":"AEP",
+                "distributorIDCode":distributorIDCode1,
                 "code":code1
             },
             dataType: "jsonp",
@@ -449,18 +537,54 @@ jQuery(document).ready(function() {
             }
         });
     });
-    /*
-    $(".Liuhong").click(function(){
-        alert("Liuhong");
-        var token1=sessionStorage.token;
+
+        $("body").on("click",".againID",function(){
+                $(".calcleMenu2").css("display","block");
+                content2D1=$(this).parent("li").parent(".items").siblings(".menuHead1").find(".content2D").text();
+                phoneNumber1=$(this).parent("li").parent(".items").find(".touristPhone").text();
+                $(".phoneNum").attr("value",phoneNumber1);
+            });
+        $(".orderSure3").click(function(){
+                phoneNumber1=$(".phoneNum").val();
+                jQuery.ajax({
+                    url:"http://www.52uku.net/webservice.asmx/SendOrderEticketsByContent2D?jsoncallback=?",
+                    type:"GET",
+                    contentType: "application/json",
+                    data:{
+                        "token":token1,
+                        "Content2D":content2D1,
+                        "phoneNumber":phoneNumber1
+                    },
+                    dataType: "jsonp",
+                    jsonp:'callback',
+                    jsonpCallback:'jsonpCallback',
+                    timeout:3000,
+                    success: function (result) {
+                        if(result.STATUS=="OOOKK"){
+                            alert("重发码成功");
+                            $(".calcleMenu2").css("display","none");
+                        }
+                    } ,
+                    error: function(err){
+                        alert("重发码失败");
+                    }
+                });
+            });
+        $(".orderCancle3").click(function(){
+                $(".calcleMenu2").css("display","none");
+            });
+
+        $("body").on("mouseenter",".detailMsg",function(){
+        for(var i=0;i<channelChoices.length;i++){
+            if(channelChoices[i].checked == true){
+                channelChoice1=channelChoices[i].value;
+            }
+        }
         beginDate1=$(".startTime").val();
         endDate1=$(".endTime").val();
-        ticketType1=$(".rName").val();
-        groupOrDetailFlag1=$(".rFlag").val();
-        alert("groupOrDetailFlag1"+groupOrDetailFlag1);
+        ticketType1=$(this).parents(".items").find(".singleIdHidden").text();
+        var groupOrDetailFlag1=$(".rFlag").val();
         orderState1=$(".rStatus").val();
-        subDistributorInFlag1=channelChoice1;
-        querystr1=$(".multiple").val();
         jQuery.ajax({
             url:"http://www.52uku.net/webservice.asmx/getOrderByComplexQuery?jsoncallback=?",
             type:"GET",
@@ -483,264 +607,123 @@ jQuery(document).ready(function() {
             jsonpCallback:'jsonpCallback',
             timeout:3000,
             success: function (result) {
-                alert("ok吗");
-                if(result.STATUS=="OOOKK"){
-                    alert("查询成功");
-                    $(".ordersGroup").show();
-                    var orders = $(".ordersGroup");
-                    $(".titleName").hide();
-                    $(".menuDiff").empty();
-                    $(".items").remove();
-                    $(".titleName2").show();
-                    $.each(result.Tickets, function (index, item) {
-                        outputData2(orders, item);
-                    });
-                }
-            } ,
-            error: function(err){
-                alert("查询失败");
-            }
-        });
-    });
-    */
-
-    $(".againID").live("click",function(){
-        $(".calcleMenu2").css("display","block");
-        content2D1=$(this).parent("li").parent(".items").siblings(".menuHead1").find(".content2D").text();
-        phoneNumber1=$(this).parent("li").parent(".items").find(".touristPhone").text();
-        $(".phoneNum").attr("value",phoneNumber1);
-        alert("phoneNumber1="+phoneNumber1);
-    });
-    $(".orderSure3").click(function(){
-        //var thirdPartyOrderNo1="1234567890127";
-
-        phoneNumber1=$(".phoneNum").val();
-        jQuery.ajax({
-            url:"http://www.52uku.net/webservice.asmx/SendOrderEticketsByContent2D?jsoncallback=?",
-            type:"GET",
-            contentType: "application/json",
-            data:{
-                "token":token1,
-                "Content2D":content2D1,
-                "phoneNumber":phoneNumber1
-            },
-            dataType: "jsonp",
-            jsonp:'callback',
-            jsonpCallback:'jsonpCallback',
-            timeout:3000,
-            success: function (result) {
-                if(result.STATUS=="OOOKK"){
-                    alert("重发码成功");
-                    $(".calcleMenu2").css("display","none");
-                }
-            } ,
-            error: function(err){
-                alert("重发码失败");
-            }
-        });
-    });
-    $(".orderCancle3").click(function(){
-        $(".calcleMenu2").css("display","none");
-    });
-    $(".detailMsg").live("click",function(){
-        alert("详情");
-        window.location.href="chart.html";
-        /*
-        var str="<script type=\"text/javascript\">"+
-        "var chart;"+
-        "$(document).ready(function() {"+
-            "chart = new Highcharts.Chart({"+
-                "chart: {"+
-                    "renderTo: 'container',"+
-                    "margin: [50, 200, 60, 170]"+
-                "},"+
-                "title: {"+
-                    "text: 'Browser market shares at a specific website, 2010'"+
-                "},"+
-                "plotArea: {"+
-                    "shadow: null,"+
-                    "borderWidth: null,"+
-                    "backgroundColor: null"+
-                "},"+
-                "tooltip: {"+
-                    "formatter: function() {"+
-                        "return '<b>'+ this.point.name +'</b>: '+ this.y +' %';"+
-                    "}"+
-                "},"+
-                "plotOptions: {"+
-                    "pie: {"+
-                        "allowPointSelect: true,"+
-                        "cursor: 'pointer',"+
-                        "dataLabels: {"+
-                            "enabled: true,"+
-                            "formatter: function() {"+
-                                "if (this.y > 5) return this.point.name;"+
-                            "},"+
-                            "color: 'white',"+
-                            "style: {"+
-                                "font: '13px Trebuchet MS, Verdana, sans-serif'"+
-                            "}"+
-                        "}"+
-                    "}"+
-                "},"+
-                "legend: {"+
-                    "layout: 'vertical',"+
-                    "style: {"+
-                        "left: 'auto',"+
-                        "bottom: 'auto',"+
-                        "right: '50px',"+
-                        "top: '100px'"+
-                    "}"+
-                "},"+
-                "series: [{"+
-                    "type: 'pie',"+
-                    "name: 'Browser share',"+
-                    "data: ["+
-                        "['Firefox',   10.0],"+
-                        "['IE',       10.0],"+
-                        "{"+
-                            "name: 'Chrome',"+
-                            "y: 10.0,"+
-                            "sliced: true,"+
-                            "selected: true"+
-                        "},"+
-                        "['Safari',    6.0],"+
-                        "['Opera',     6.0],"+
-                        "['Others',   6.0]"+
-                    "]"+
-                "}]"+
-            "});"+
-        "});"+
-        "<\/script>"
-        */
-        //$("#container").show();
-    });
-    $(".ranking").live("click",function(){
-        for(var i=0;i<channelChoices.length;i++){
-            if(channelChoices[i].checked == true){
-                channelChoice1=channelChoices[i].value;
-                alert("channelChoice1"+channelChoice1);subDistributorInFlag1=channelChoice1;
-
-            }
-        }
-        beginDate1=$(".startTime").val();
-        endDate1=$(".endTime").val();
-        ticketType1=$(".rName").val();
-        //alert($(".rFlag").val());
-        var groupOrDetailFlag1=$(".rFlag").val();
-        //alert("groupOrDetailFlag1"+groupOrDetailFlag1);
-        orderState1=$(".rStatus").val();
-        //alert("subDistributorInFlag1"+channelChoice1);
-        jQuery.ajax({
-            url:"http://www.52uku.net/webservice.asmx/getOrderByComplexQueryV1?jsoncallback=?",
-            type:"GET",
-            contentType: "application/json",
-            data:{
-                "token":token1,
-                "distributorIDCode":"AEP",
-                "beginDate":beginDate1,
-                "endDate":endDate1,
-                "ticketTypeID":0,
-                "parkID":0.000,
-                "operatorID":0,
-                "salerID":0,
-                "subDistributorInFlag":subDistributorInFlag1,
-                "groupOrDetailFlag":groupOrDetailFlag1,
-                "orderState":orderState1
-            },
-            dataType: "jsonp",
-            jsonp:'callback',
-            jsonpCallback:'jsonpCallback',
-            timeout:3000,
-            success: function (result) {
-                // alert("ok吗");
                 if (result.STATUS == "OOOKK") {
+                    if (result.RECORDNUM > 0) {
+                        var BuyTicketNum=[];
+                        var sumBuyTicketNum = [];
+                        var sumTicketAvailable=[];
+                        var sumTicketVerified=[];
+                        var DistributorName=[];
+                        var sum=0;
+                        var sum_DistributorName=[];
+                        var indexDistributorName=[];
+                        $.each(result.Tickets, function (index, item) {
+                                sumBuyTicketNum[index]=0;
+                                sumTicketAvailable[index]=0;
+                                sumTicketVerified[index]=0;
+                                for(var i=0;i<item.Info.length;i++){
+                                    BuyTicketNum[i]=parseInt(item.Info[i].BuyTicketNum);
+                                    sumBuyTicketNum[index] += parseInt(item.Info[i].BuyTicketNum);
+                                    sumTicketAvailable[index] += parseInt(item.Info[i].TicketAvailable);
+                                    sumTicketVerified[index] += parseInt(item.Info[i].TicketVerified);
+                                    DistributorName[i]=item.Info[i].DistributorName;
+                                }
+                                sum+=(sumBuyTicketNum[index]==0)?1:sumBuyTicketNum[index];
+                            }
 
-                    alert("查询成功");
-                        if (result.RECORDNUM > 0) {
+                        );
 
-                        } else {
-                            $(".noMenu").show().find(".noText").text("未查询到订单");
+
+                        for(var j=0;j<DistributorName.length;j++){
+                            sum_DistributorName[j]=(BuyTicketNum[j] == 0?1:BuyTicketNum[j])/sum*100;
+                        }
+                        var json=[];
+                        json.push(["其它",0.1])
+                        for(var p=0;p<sum_DistributorName.length;p++){
+                            json.push([DistributorName[p],parseInt(sum_DistributorName[p])]);
                         }
 
+                        var chart;
+                        chart = new Highcharts.Chart({
+                            chart: {
+                                renderTo: 'calcleMenu3',
+                                margin: [40, 0, 0, 0]
+                            },
+                            title: {
+                                text: result.Tickets["0"].TicketTypeName,
+                            },
+                            plotArea: {
+                                shadow: null,
+                                borderWidth: null,
+                                backgroundColor: null
+                            },
+                            tooltip: {
+                                formatter: function() {
+                                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                                }
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: true,
+                                        formatter: function() {
+                                            if (this.y > 5) return this.point.name;
+                                        },
+                                        color: 'white',
+                                        style: {
+                                            font: '13px Trebuchet MS, Verdana, sans-serif'
+                                        }
+                                    }
+                                }
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                style: {
+                                    left: 'auto',
+                                    bottom: 'auto',
+                                    right: '100px',
+                                    top: '100px'
+                                }
+                            },
+                            series: [{
+                                type: 'pie',
+                                name: 'chart',
+                                data: json
+                            }]
+                        });
+                        $("#calcleMenu3").show();
+
+                    } else {
+                        $(".noMenu").show().find(".noText").text("未查询到订单");
+
+                    }
                 }
             },
             error: function(err){
                 alert("查询失败");
             }
         });
-        alert("详情");
-        //window.location.href="chart.html";
-        /*
-         var str="<script type=\"text/javascript\">"+
-         "var chart;"+
-         "$(document).ready(function() {"+
-         "chart = new Highcharts.Chart({"+
-         "chart: {"+
-         "renderTo: 'container',"+
-         "margin: [50, 200, 60, 170]"+
-         "},"+
-         "title: {"+
-         "text: 'Browser market shares at a specific website, 2010'"+
-         "},"+
-         "plotArea: {"+
-         "shadow: null,"+
-         "borderWidth: null,"+
-         "backgroundColor: null"+
-         "},"+
-         "tooltip: {"+
-         "formatter: function() {"+
-         "return '<b>'+ this.point.name +'</b>: '+ this.y +' %';"+
-         "}"+
-         "},"+
-         "plotOptions: {"+
-         "pie: {"+
-         "allowPointSelect: true,"+
-         "cursor: 'pointer',"+
-         "dataLabels: {"+
-         "enabled: true,"+
-         "formatter: function() {"+
-         "if (this.y > 5) return this.point.name;"+
-         "},"+
-         "color: 'white',"+
-         "style: {"+
-         "font: '13px Trebuchet MS, Verdana, sans-serif'"+
-         "}"+
-         "}"+
-         "}"+
-         "},"+
-         "legend: {"+
-         "layout: 'vertical',"+
-         "style: {"+
-         "left: 'auto',"+
-         "bottom: 'auto',"+
-         "right: '50px',"+
-         "top: '100px'"+
-         "}"+
-         "},"+
-         "series: [{"+
-         "type: 'pie',"+
-         "name: 'Browser share',"+
-         "data: ["+
-         "['Firefox',   10.0],"+
-         "['IE',       10.0],"+
-         "{"+
-         "name: 'Chrome',"+
-         "y: 10.0,"+
-         "sliced: true,"+
-         "selected: true"+
-         "},"+
-         "['Safari',    6.0],"+
-         "['Opera',     6.0],"+
-         "['Others',   6.0]"+
-         "]"+
-         "}]"+
-         "});"+
-         "});"+
-         "<\/script>"
-         */
-        //$("#container").show();
     });
+        $("body").on("mouseleave",".detailMsg",function(){
+
+
+        });
+
+        $(".i-triangle").click(function(){
+                $(this).parents('.orderTypeMsg').find('.orderType').css("display","block");
+            });
+        $(".orderType").hover(function(){
+                $(this).css("display","block");
+            },function(){
+                $(this).css("display","none");
+            });
+        $(".orderType li").click(function(){
+                $(this).parent(".orderType").siblings("div").find("input.inputMsg").attr("value",$(this).find("a").text());
+                $(this).parent(".orderType").siblings("div").find(".realNum").attr("value",$(this).find("a").attr("value"));
+            });
+
     });
 
 

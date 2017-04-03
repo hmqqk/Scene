@@ -4,6 +4,7 @@
 (function(){
     /*login_part and register_part*/
 
+
      $('#back').click(function(){
      window.location.href="index.html";
      });
@@ -32,7 +33,7 @@
         }else{
             printHtml(box_user,loginMsg);
         }
-        $(".uLogout").live("click",function(){
+        $(".uLogout").on("click",function(){
             emptyCookie();
             window.location.reload();
         })
@@ -40,45 +41,6 @@
     function printHtml(container,Msg) {
         container.html(Msg);
     }
-    /*
-    $(".buy").live("click",function(){
-        alert(1);
-        var str="<form class=\"shopMsg\">"+
-            "<div class=\"ticketMsg\">"+
-            "<span>游客名:</span>"+
-        "<input type=\"text\" class=\"basicMsg\">"+
-            "</div>"+
-            "<div class=\"ticketMsg\">"+
-            "<span>电话:</span>"+
-        "<input type=\"text\" class=\"basicMsg\">"+
-            "</div>"+
-            "<div class=\"ticketMsg\">"+
-            "<span>游玩日期:</span>"+
-        "<input type=\"text\" class=\"basicMsg\">"+
-            "</div>"+
-            "<div class=\"ticketMsg chooseMsg\">"+
-            "<span>短信通知：</span>"+
-        "<label>是</label>“+
-        "<input id=\"yes\" type=\"radio\" checked=\"checked\" >"+
-            "<label>否</label>"+
-            "<input id=\"no\" type=\"radio\" >"+
-            "</div>"+
-            "<div class=\"ticketMsg\">"+
-            "<span>票数：</span>"+
-        "<a href=\"javascript:void(0)\" class=\"sub\">-</a>"+
-            "<input type=\"text\" value=\"1\" class=\"numbers\">"+
-            "<a href=\"javascript:void(0)\" class=\"add\">+</a>"+
-            "</div>"+
-            "<button value=\"\" class=\"orderSure\">确定</button>"+
-            "<button value=\"\" class=\"orderCancle\">取消</button>"+
-            "</form>";
-        var container=$(this).parent(".sceneDMSG");
-        container.append(str);
-
-    })
-
-   */
-    /*logout operator*/
 
     $(".i-triangle").click(function(){
         $(this).parents('.orderTypeMsg').find('.orderType').css("display","block");
@@ -94,6 +56,55 @@
         //alert($(this).find("a").attr("value"));
         //alert($(this).parent(".orderType").siblings("div").find(".realNum").attr("value"));
     });
+
+     $(".againID").on("click",function(){
+         $(".calcleMenu2").css("display","block");
+         content2D1=$(this).parent("li").parent(".items").siblings(".menuHead1").find(".content2D").text();
+         phoneNumber1=$(this).parent("li").parent(".items").find(".touristPhone").text();
+         $(".phoneNum").attr("value",phoneNumber1);
+     });
+     $(".orderSure3").click(function(){
+         phoneNumber1=$(".phoneNum").val();
+         jQuery.ajax({
+             url:"http://www.52uku.net/webservice.asmx/SendOrderEticketsByContent2D?jsoncallback=?",
+             type:"GET",
+             contentType: "application/json",
+             data:{
+                 "token":token1,
+                 "Content2D":content2D1,
+                 "phoneNumber":phoneNumber1
+             },
+             dataType: "jsonp",
+             jsonp:'callback',
+             jsonpCallback:'jsonpCallback',
+             timeout:3000,
+             success: function (result) {
+                 if(result.STATUS=="OOOKK"){
+                     alert("重发码成功");
+                     $(".calcleMenu2").css("display","none");
+                 }
+             } ,
+             error: function(err){
+                 alert("重发码失败");
+             }
+         });
+     });
+        $(".orderCancle3").click(function(){
+         $(".calcleMenu2").css("display","none");
+     });
+        $(".i-triangle").click(function(){
+            $(this).parents('.orderTypeMsg').find('.orderType').css("display","block");
+        });
+        $(".orderType").hover(function(){
+            $(this).css("display","block");
+        },function(){
+            $(this).css("display","none");
+        });
+        $(".orderType li").click(function(){
+            $(this).parent(".orderType").siblings("div").find("input.inputMsg").attr("value",$(this).find("a").text());
+            $(this).parent(".orderType").siblings("div").find(".realNum").attr("value",$(this).find("a").attr("value"));
+        })
+
 
 
 })();

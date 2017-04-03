@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>order</title>
-    <link rel='stylesheet' href='css/base.css'>
-    <script type="text/javascript"  src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript"  src="js/cookie.js"></script>
 
+    <link rel='stylesheet' href='css/jedate.css'>
+    <link rel='stylesheet' href='css/base.css'>
+
+    <style>
+        .bodys{ padding:50px 0 0 50px;}
+        .datainp{ width:200px; height:30px; border:1px #ccc solid;}
+        .datep{ margin-bottom:40px; line-height:24px; margin-right:15px;}
+    </style>
 </head>
 <body id="wrap">
    <header>
@@ -44,7 +49,7 @@
                        <div class="timeNav">
                            <input type="text" class="inputMsg on-selected b1" value="下单时间" readonly>
                            <em class="i-triangle">
-                               <i class="triangle"></i>
+                               <i class="triangle1"></i>
                            </em>
                        </div>
                        <ul class="orderType">
@@ -58,11 +63,12 @@
                        </ul>
 
                    </div>
-                   <input type="text" class="inputMsg startTime">
+                   <input type="text" class="inputMsg startTime jedate datepicker-here datainp" id="startTime" data-language="en" value="">
                    -
-                   <input type="text" class="inputMsg endTime">
+                   <input type="text" class="inputMsg endTime jedate datepicker-here datainp" id="endTime" data-language="en" value="">
+                   <!--
                    <div id="timeNodeBox" class="timeNodeBox">
-                       <a class="timenode clear ui-link clear" href="javascript:void(0)">清除</a>
+                       <a class="timenode clearDate ui-link clear" href="javascript:void(0)">清除</a>
                        <a class="timenode ui-link yestoday" href="javascript:void(0)">昨天</a>
                        <a class="timenode ui-link today" href="javascript:void(0)">今天</a>
                        <a class="timenode ui-link week" href="javascript:void(0)">本周</a>
@@ -70,8 +76,97 @@
                        <a class="timenode ui-link month" href="javascript:void(0)">本月</a>
                        <a class="timenode ui-link prevMonth" href="javascript:void(0)">上月</a>
                    </div>
+                   -->
                </div>
            </div>
+           <!--
+           <script type="text/javascript">
+               var start = {
+                   format: 'YYYY-MM-DD',
+                   minDate: '2014-06-16', //设定最小日期为当前日期
+                   festival:true,
+                   //isinitVal:true,
+                   maxDate: $.nowDate(0), //最大日期
+                   choosefun: function(elem,datas){
+                       end.minDate = datas; //开始日选好后，重置结束日的最小日期
+                   }
+               };
+               var end = {
+                   format: 'YYYY年MM月DD日',
+                   minDate: $.nowDate(0), //设定最小日期为当前日期
+                   festival:true,
+                   //isinitVal:true,
+                   maxDate: '2099-06-16', //最大日期
+                   choosefun: function(elem,datas){
+                       start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+                   }
+               };
+               $("#inpstart").jeDate(start);
+               $("#inpend").jeDate(end);
+
+
+               $("#date01").jeDate({
+                   isinitVal:true,
+                   festival:true,
+                   ishmsVal:false,
+                   minDate: '2016-06-16 23:59:59',
+                   maxDate: $.nowDate(0),
+                   format:"YYYY-MM-DD hh:mm:ss",
+                   zIndex:3000,
+               })
+               $(".jedate").jeDate({
+                   isinitVal:true,
+                   festival:true,
+                   ishmsVal:false,
+                   minDate: '2016-06-16',
+                   maxDate: $.nowDate(0),
+                   format:"YYYY-MM-DD",
+                   zIndex:3000,
+               })
+               $("#date03").jeDate({
+                   isinitVal:true,
+                   festival:true,
+                   ishmsVal:false,
+                   minDate: '2016-06-16 23:59:59',
+                   maxDate: $.nowDate(0),
+                   format:"YYYY-MM-DD",
+                   zIndex:3000,
+               })
+               $("#date04").jeDate({
+                   isinitVal:true,
+                   festival:true,
+                   ishmsVal:false,
+                   minDate: '2016-06-16 23:59:59',
+                   maxDate: $.nowDate(0),
+                   format:"YYYY-MM",
+                   zIndex:3000,
+               })
+               $("#date05").jeDate({
+                   isinitVal:true,
+                   festival:true,
+                   ishmsVal:false,
+                   minDate: '2016-06-16 23:59:59',
+                   maxDate: $.nowDate(0),
+                   format:"hh:mm:ss",
+                   zIndex:3000,
+               })
+
+
+               function testShow(elem){
+                   $.jeDate(elem,{
+                       insTrigger:false,
+                       isinitVal:true,
+                       festival:true,
+                       ishmsVal:false,
+                       minDate: '2016-06-16 23:59:59',
+                       maxDate: $.nowDate(0),
+                       format:"hh:mm",
+                       zIndex:3000,
+                   })
+               }
+
+           </script>
+           -->
            <div class="rows">
                <div class="palyerMsg">
                    <label>票型名：</label>
@@ -80,7 +175,7 @@
                            <input type="text" class="inputMsg on-selected b1" value="全部" readonly>
                            <input type="hidden" value="0" class="realNum rName">
                            <em class="i-triangle">
-                               <i class="triangle"></i>
+                               <i class="triangle1"></i>
                            </em>
                        </div>
                        <ul class="orderType">
@@ -117,7 +212,7 @@
                            <input type="text" class="inputMsg on-selected b1" value="全部" readonly>
                            <input type="hidden" value="6" class="realNum rStatus">
                            <em class="i-triangle">
-                               <i class="triangle"></i>
+                               <i class="triangle1"></i>
                            </em>
                        </div>
                        <ul class="orderType">
@@ -154,7 +249,7 @@
                            <input type="text" class="inputMsg on-selected b1" value="详单查询" readonly>
                            <input type="hidden" value="DETAIL" class="realNum rFlag">
                            <em class="i-triangle">
-                               <i class="triangle"></i>
+                               <i class="triangle1"></i>
                            </em>
                        </div>
                        <ul class="orderType">
@@ -162,7 +257,10 @@
                                <a href="javascript:void(0)" value="DETAIL">详单查询</a>
                            </li>
                            <li>
-                               <a href="javascript:void(0)" value="GROUP">统计查询</a>
+                               <a href="javascript:void(0)" value="GroupByDistributorName">按分销商统计查询</a>
+                           </li>
+                           <li>
+                               <a href="javascript:void(0)" value="GroupByTicketTypeName">按票型名统计查询</a>
                            </li>
                        </ul>
 
@@ -185,7 +283,7 @@
                        <div class="orderSelect">
                            <input type="text" class="inputMsg on-selected b1 b2" value="下单时间" readonly>
                            <input type="hidden" value="0" class="realNum">
-                           <em class="i-triangle i-triangle2 b3">
+                           <em class="i-triangle i-triangle2 i-triangle3 b3">
                                <i class="triangle2"></i>
                            </em>
                        </div>
@@ -208,7 +306,10 @@
                    <input type="radio" class="channel produceSelect" value="3" name="channelChoices" checked="checked">全部</input>
                    <input type="radio" class="channel" value="1" name="channelChoices">仅自己</input>
                    <input type="radio" class="channel" value="2" name="channelChoices">下级分销商</input>
+                   <!--
                    <input class="ranking" value="销售总排行" readonly>
+                   -->
+
                    <!--
                    <label>供销商筛选：</label>
                    <label class="radioGroup"><input class="gRadio" data-param="gmode" data-val="0" type="radio" name="gmode" checked="">全部</label>
@@ -218,7 +319,7 @@
                        <div>
                            <input type="text" class="inputMsg on-selected b1" value="全部" readonly>
                            <em class="i-triangle">
-                               <i class="triangle"></i>
+                               <i class="triangle1"></i>
                            </em>
                        </div>
                        <ul class="orderType">
@@ -300,18 +401,25 @@
                    <a href="" class="gnumber">票数</a>
                    <a href="" class="gmoney">金额</a>
                </div>
+               <div id="highcharts">
+
+               </div>
+
+
                <ul class="titleName2">
-                   <li class="name1">
+                   <li class="name8">
                          <span>
                             <a href="" class="allId">票型名</a>
                          </span>
                    </li>
-                   <li class="name3">已购买总数</li>
-                   <li class="name2">已验票总数</li>
-                   <li class="name4">剩余可用票总数</li>
-                   <li class="name4">操作</li>
-                   <li class="name5"></li>
+                   <li class="name6">已购买总数</li>
+                   <li class="name6">已验票总数</li>
+                   <li class="name6">剩余可用票总数</li>
+                   <li class="name6"></li>
+                   <li class="name7"></li>
                </ul>
+
+
                <!--
                <ul class="items">
                <li class="name1">
@@ -350,6 +458,8 @@
                <div class="ticketMsg2"><span>电话号码</span><input type="text" class="basicMsg phoneNum" value=""></div>
                <button value="" class="orderSure3">确定</button>
                <button value="" class="orderCancle3">取消</button>
+           </div>
+           <div id="calcleMenu3">
            </div>
            <div id="container">
 
@@ -392,77 +502,27 @@
            </p>
        </footer>
    </div>
-</body>
-<script type="text/javascript"  src="js/dataone2.js"></script>
-<script type="text/javascript"  src="js/getOrderInfo.js"></script>
-<script type="text/javascript" src="js/highcharts.js"></script>
-<script src="js/base.js"></script>
-<script type="text/javascript">
 
-    var chart;
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'container',
-                margin: [0, 0, 0, 0]
-            },
-            title: {
-                text: 'Browser market shares at a specific website, 2010'
-            },
-            plotArea: {
-                shadow: null,
-                borderWidth: null,
-                backgroundColor: null
-            },
-            tooltip: {
-                formatter: function() {
-                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        formatter: function() {
-                            if (this.y > 5) return this.point.name;
-                        },
-                        color: 'white',
-                        style: {
-                            font: '13px Trebuchet MS, Verdana, sans-serif'
-                        }
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                style: {
-                    left: 'auto',
-                    bottom: 'auto',
-                    right: '50px',
-                    top: '100px'
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Browser share',
-                data: [
-                    ['Firefox',   10.0],
-                    ['IE',       10.0],
-                    {
-                        name: 'Chrome',
-                        y: 10.0,
-                        sliced: true,
-                        selected: true
-                    },
-                    ['Safari',    6.0],
-                    ['Opera',     6.0],
-                    ['Others',   6.0]
-                ]
-            }]
-        });
-    });
+</body>
+
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script type="text/javascript"  src="js/getOrderInfo.js"></script>
+<script type="text/javascript"  src="js/cookie.js"></script>
+<script type="text/javascript" src="js/jquery.jedate.js"></script>
+<script type="text/javascript">
+        $("#startTime").jeDate({
+            isinitVal:true,
+            format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+            initAddVal:[-7,"DD"]
+        })
+        $("#endTime").jeDate({
+            isinitVal:true,
+            format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+        })
 
 </script>
+<script type="text/javascript"  src="js/base.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
 </html>
+
+

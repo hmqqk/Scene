@@ -545,7 +545,7 @@ p.c_bn{
 
 }
 .on-selected{
-	width:87px !important;
+	width:110px !important;
 }
 .palyerMsg:not(:first-child){
 	margin-left:20px;
@@ -569,8 +569,6 @@ p.c_bn{
 	position:fixed;
 	top:200px;
 	left:450px;
-	width:450px;
-	height:250px;
 	background:#F5F5F5;
 	border:1px solid #ccc;
 	display:none;
@@ -583,6 +581,16 @@ p.c_bn{
 	height:160px;
 	background:#F5F5F5;
 	border:1px solid #ccc;
+	display:none;
+
+}
+#calcleMenu3{
+	position:fixed;
+	bottom:10px;
+	right:0px;
+	width:700px;
+	height:400px;
+	background:#fff;
 	display:none;
 }
 .orderSure3{
@@ -612,10 +620,20 @@ p.c_bn{
 	background: #FFF;
 	display:inline-block;
 	border:1px solid #999;
-	border-left:none;
 	cursor: pointer;
 }
-.triangle{
+.i-triangle3{
+	position:relative;
+	top:11.2px;
+	left:-5px;
+	width: 32px;
+	height:32px;
+	background: #FFF;
+	display:inline-block;
+	border:none;
+	cursor: pointer;
+}
+.triangle1{
 	width:0;
 	height:0;
 	display:block;
@@ -637,15 +655,15 @@ p.c_bn{
 	border-top: 6px solid #999;
 	border-bottom: none;
 }
+
 .orderType{
 	position:absolute;
 	left:0;
 	top:42.6px;
 	padding:10px 0 5px 10px;
-	width:119px;
+	width:142px;
 	background-color:#fff;
 	border:1px solid gray;
-	border-top:none;
 	display:none;
 	z-index:1;
 }
@@ -1420,7 +1438,7 @@ p.c_bn{
 .pointer{
 	cursor:pointer;
 }
-#container{
+#highcharts{
 	position:fixed;
 	margin:40px auto;
 	top:0px;
@@ -1439,4 +1457,31 @@ p.c_bn{
 	border:none;
 	text-align:center;
 	margin-left:20px;
+}
+
+.singleIdHidden{
+	display:none;
+}
+
+.highcharts-legend rect{
+	stroke:"#fff" !important;
+}
+.name6{
+	width:10%;
+}
+.name7{
+	width:40%;
+}
+.name8{
+	width:20%;
+}
+.highcharts-legend rect {
+	stroke:none;
+}
+.jedateblue .jedatebot .jedatebtn {
+	text-align: center;
+	font-size: 12px;
+}
+.highcharts-container{
+	border-radius:100%;
 }

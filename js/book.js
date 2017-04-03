@@ -1,4 +1,4 @@
-document.write("<script type='text/javascript' src='js/jquery.js'></script>");
+
 document.write("<script type='text/javascript' src='js/jquery.md5.js'></script>");
 
 function book(ticketTypeID,TicketTypeIDDistributorLevelCode,ticketTypeName,num,touristName,touristTel,touristDate,check){

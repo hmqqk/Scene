@@ -29,15 +29,7 @@ document.write("<script type='text/javascript' src='js/jquery.md5.js'></script>"
                    timeout:3000,
                  success: function (result) {
                  	if(result.STATUS=="OOOKK"){
-                        //alert(result.DATASET+result.STATUS);
-                        //alert("what "+result.DATASET[0].Token);
                         getUserInformation(result);
-                        //sessionStorage.token=result.DATASET[0].Token;
-                        alert(result.DATASET[0].Token);
-                        //sessionStorage.distributorID=result.DATASET[0].DistributorID;
-                        //sessionStorage.distributorIDCode=result.DATASET.DistributorIDCode;
-                        //alert(sessionStorage.token);
-                        //alert(sessionStorage.distributorID);
                         window.location.href="index.html";
                  	}
                  } ,
