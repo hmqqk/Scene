@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Scene</title>
+    <link rel='stylesheet' href='css/jedate.css'>
     <link rel='stylesheet' href='css/base.css'>
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/cookie.js"></script>
-    <script src="js/dataone2.js"></script>
-    <script src="js/book.js"></script>
-    <script src="js/connect_web.js"></script>
 </head>
 <body id="wrap">
   <header>
@@ -38,130 +34,21 @@
         </div>
     </div>
 </header>
-  <div class="content2">
+  <div class="banner_menu">
+      <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="scene.html" class="changeScene" id="module">风景区</a></li>
+          <li><a href="order.html">订单管理</a></li>
+          <li><a href="financial.html">财务管理</a></li>
+          <li><a href="personal.html">个人中心</a></li>
+          <li><a href="notification.html">平台通知</a></li>
+      </ul>
+  </div>
+  <div class="clear"></div>
+  <div class="content2 ">
     <div class="scene2">
         <div class="sceneitems">
-            <!--
-            <div class="sceneTitle">
-                <img src="images/suzhou.jpg">
-                <div class="introduction">
-                    <h2>苏州乐园<label><江苏,苏州></label></h2>
-                    <label>特殊说明</label>
-                    <p>江苏省苏州市新区玉山路156号</p>
-                    <b>开园时间:9:00-17:00</b>
-                </div>
-            </div>
-            -->
             <div class="clear"></div>
-            <!--
-            <div class="scenePart">
-                <div class="sceneTitle">
-                    <img src="images/suzhou.jpg">
-                    <div class="introduction">
-                        <h2>票型名称<label>&lt;分销商&gt;</label></h2>
-                        <label>特殊说明</label>
-                        <p>江苏省苏州市新区玉山路156号</p>
-                        <b>开园时间:9:00-17:00</b>
-                    </div>
-                    <p class="lowestPrice">¥<span class="myPrice">90</span><span class="myPriceqi">起</span></p>
-                </div>
-                <ul class="sceneMsg">
-                    <li class="type">票型名称</li>
-                    <li class="explation">购买说明</li>
-                    <li class="cost1">门市价</li>
-                    <li class="cost2">网购价</li>
-                </ul>
-                <ul class="sceneDMsg">
-                    <li class="type"><a href="">九天山滑雪周内不限时</a></li>
-                    <li class="explation">需在2016/2/4 20:44:56至2018/2/4 20:44:56期间完成使用啦啦啦啦啦啦啦啦啦啦啦啦啦爱啦啦啦绿啦啦绿啦奥绿绿绿绿绿绿绿啦啦啦啦啦啦啦啦啦啦啦啦啦</li>
-                    <li class="cost1">￥158</li>
-                    <li class="cost2 red">￥90</li>
-                    <li class="buy">
-                        <button value="">购买</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="clear line"></div>
-            -->
-
-            <!--
-            <ul class="sceneDMsg">
-                <li class="type"><a href="">欢乐世界</a></li>
-                <li class="explation">需提前1天的22:15之前可购买</li>
-                <li class="cost1">￥0.00</li>
-                <li class="cost2 red">￥0.00</li>
-                <li class="cost2">
-                    <a href="" class="sub">-</a>
-                    <input type="text" value="1" class="numbers">
-                    <a href="" class="add">+</a>
-                </li>
-                <li class="buy">
-                    <button value="">购买</button>
-                </li>
-            </ul>
-            <ul class="sceneDMsg">
-                <li class="type"><a href="">欢乐世界</a></li>
-                <li class="explation">需提前1天的22:15之前可购买</li>
-                <li class="cost1">￥0.00</li>
-                <li class="cost2 red">￥0.00</li>
-                <li class="cost2">
-                    <a href="" class="sub">-</a>
-                    <input type="text" value="1" class="numbers">
-                    <a href="" class="add">+</a>
-                </li>
-                <li class="buy">
-                    <button value="">购买</button>
-                </li>
-            </ul>
-             -->
-            <!--
-            <ul class="sceneDMsg">
-                <li class="type"><a href="">欢乐世界</a></li>
-                <li class="explation">需提前1天的22:15之前可购买</li>
-                <li class="cost1">￥0.00</li>
-                <li class="cost2 red">￥0.00</li>
-                <li class="cost2">
-                    <a href="javascript:void(0)" class="sub">-</a>
-                    <input type="text" value="1" class="numbers">
-                    <a href="javascript:void(0)" class="add">+</a>
-                </li>
-                <li class="buy">
-                    <button value="">购买</button>
-                </li>
-            </ul>
-            -->
-            <!--
-            <form class="shopMsg">
-                <div class="ticketMsg">
-                    <span>游客名:</span>
-                    <input type="text" class="basicMsg">
-                </div>
-                <div class="ticketMsg">
-                    <span>电话:</span>
-                    <input type="text" class="basicMsg">
-                </div>
-                <div class="ticketMsg">
-                    <span>游玩日期:</span>
-                    <input type="text" class="basicMsg">
-                </div>
-                <div class="ticketMsg chooseMsg">
-                    <span>短信通知：</span>
-                    <label>是</label>
-                    <input id="yes" type="radio" checked="checked" >
-                    <label>否</label>
-                    <input id="no" type="radio" >
-                </div>
-                <div class="ticketMsg">
-                    <span>票数：</span>
-                    <a href="javascript:void(0)" class="sub">-</a>
-                    <input type="text" value="1" class="numbers">
-                    <a href="javascript:void(0)" class="add">+</a>
-                </div>
-                <button value="" class="orderSure">确定</button>
-                <button value="" class="orderCancle">取消</button>
-
-            </form>
-            -->
         </div>
     </div>
     <div  class="link_page clear">
@@ -201,5 +88,18 @@
       </footer>
   </div>
 </body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type='text/javascript' src='js/jquery.md5.js'></script>
+<script src="js/cookie.js"></script>
+<script type="text/javascript" src="js/jquery.jedate.js"></script>
+<script type="text/javascript">
+    $("body").on('focus','.touristDate',function(){
+       $(".touristDate").jeDate({
+        format: 'YYYY-MM-DD',
+        minDate:$.nowDate(0)
+      })
+});
+</script>
+<script src="js/scene.js"></script>
 <script src="js/base.js"></script>
 </html>

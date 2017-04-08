@@ -2,6 +2,7 @@
  * Created by Administrator on 2016/12/2 0002.*/
 
 function getUserInformation(Data) {
+    setCookie("ticketTypeFlag","false");
     setCookie("UserID",Data.DATASET[0].UserID);
     setCookie("UserName",Data.DATASET[0].UserName);
     setCookie('UserPassword',Data.DATASET[0].UserPassword);

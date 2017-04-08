@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fancial</title>
+    <link rel='stylesheet' href='css/base.css'>
+</head>
+<body id="wrap">
+<header>
+    <h1>
+        <a  href="index.html">
+            <img  src="images/logo.png"  alt="" />
+        </a>
+    </h1>
+    <div  id="top_search">
+        <div class="search_index">
+            <input class="searchtext"  type="text" name="search" value="搜一搜"/>
+            <input class="submit_bt" type="text" value="搜索"  name="submit_bt"/>
+        </div>
+    </div>
+    <div  id="shop_user">
+        <div  class="box_shop">
+            <!-- /justIT/jsp/user/cart.jsp -->
+        </div>
+        <div  class="box_user box_shop_user">
+            <!--
+            <div>
+                <a  href="login.html">登录</a>
+                <span>|</span>
+                <a  href="register.html">注册</a>
+            </div>
+            -->
+        </div>
+    </div>
+</header>
+<div class="banner_menu">
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="scene.html">风景区</a></li>
+        <li><a href="order.html">订单管理</a></li>
+        <li><a href="financial.html" id="module">财务管理</a></li>
+        <li><a href="personal.html">个人中心</a></li>
+        <li><a href="notification.html">平台通知</a></li>
+    </ul>
+</div>
+<div class="clear"></div>
+<div class="fcontent">
+    <div class="clear"></div>
+    <form class="fancialSearch" method="get">
+        <div class="rows rows2">
+            <div class="palyerMsg">
+                <label>时间：</label>
+                <input type="text" class="inputMsg startTime jedate datepicker-here datainp finp" id="startTime" data-language="en" value="">
+                -
+                <input type="text" class="inputMsg endTime jedate datepicker-here datainp finp" id="endTime" data-language="en" value="">
+                <label>账号：</label>
+                <div class="orderTypeMsg">
+                    <div>
+                        <input type="text" class="inputMsg on-selected b1 account" value="全部" readonly>
+                        <input type="hidden" value="6" class="realNum rStatus">
+                        <em class="i-triangle">
+                            <i class="triangle1"></i>
+                        </em>
+                    </div>
+                    <ul class="orderType">
+                        <li value="666">
+                            <a href="javascript:void(0)" value="6">全部</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="0">上游</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="1">下游</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <label>交易：</label>
+                <div class="orderTypeMsg">
+                    <div>
+                        <input type="text" class="inputMsg on-selected b1 transaction" value="全部" readonly>
+                        <input type="hidden" value="DETAIL" class="realNum rFlag">
+                        <em class="i-triangle">
+                            <i class="triangle1"></i>
+                        </em>
+                    </div>
+                    <ul class="orderType">
+                        <li>
+                            <a href="javascript:void(0)" value="DETAIL">全部</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="GroupByDistributorName">充值</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="GroupByTicketTypeName">交易</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="DETAIL">购票扣钱</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="GroupByDistributorName">退票返钱</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="GroupByTicketTypeName">下游退票退款</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" value="GroupByTicketTypeName">下游售票入账</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <label>上游：</label>
+                <input type="text" class="inputMsg startTime jedate datepicker-here datainp finp focusEvent" id="" data-language="en" value="">
+                <label>下游：</label>
+                <input type="text" class="inputMsg endTime jedate datepicker-here datainp finp focusEvent" id="" data-language="en" value="">
+                <input type="button" value="查询" class="search searchbyMultiple">
+            </div>
+        </div>
+    </form>
+    <div class="clear"></div>
+    <div class="fancialContent">
+        <div class="fcontent1">
+            <div class="ff1">
+                <ul class="fcontent1title">
+                    <li>上游</li>
+                    <li>下游</li>
+                    <li>额度</li>
+                    <li>余额</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+                <ul class="fcontent1items">
+                    <li>游酷网</li>
+                    <li>咚咚网</li>
+                    <li>0</li>
+                    <li>1000952</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="fcontent2">
+            <div class="ff2">
+                <ul class="fcontent2title">
+                    <li>金额</li>
+                    <li>账户编号</li>
+                    <li>账户名称</li>
+                    <li>交易编码</li>
+                    <li>日期</li>
+                    <li>属性</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+                <ul class="fcontent2items">
+                    <li>0</li>
+                    <li>418</li>
+                    <li>孙萍</li>
+                    <li>55</li>
+                    <li>2017/4/3</li>
+                    <li>充值</li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div  class="bg_w">
+    <footer  class="footer ">
+        <p  class="flink">
+            <a  href=""  class="fstrong">所有景区</a>
+            <a  href=""> 精选推荐</a>
+            <a  href="">今日推荐 </a>
+            <a  href="">人气景区</a>
+            <a  href="">猜你喜欢</a>
+            <a  href=""  class="fstrong">关于我们</a>
+            <a  href=""> 关于网站</a>
+            <a  href="">联系我们</a>
+            <a  href="">  加入我们</a>
+            <a  href=""  class="fstrong">用户帮助</a>
+            <a  href=""> 新手指南</a>
+            <a  href="">网站地图</a>
+            <a  href=""> 意见反馈</a>
+        </p>
+        <p>
+            Copyright &copy;2013-2015 zhaopiao.net 版权所有 沪ICP备14014674号-3
+        </p>
+        <p>
+            客服电话：800-920-8820  技术支持：xxxxxxxx
+        </p>
+    </footer>
+</div>
+
+</body>
+
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script type="text/javascript"  src="js/cookie.js"></script>
+<script type="text/javascript"  src="js/base.js"></script>
+</html>
+
+
