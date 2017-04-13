@@ -229,7 +229,7 @@ $(document).ready(function(){
         //alert("TicketTypeIDDistributorLevelCode:"+TicketTypeIDDistributorLevelCode);
         var thirdpartyno1=getCookie("distributorID")+new Date().getTime();
         jQuery.ajax({
-            url:"http://www.52uku.net/webservice.asmx/bookAndBuyTicketsForDistributor?jsoncallback=?",
+            url:"http://www.52uku.net/webservice.asmx/bookAndBuyTicketsForDistributorV1 ?jsoncallback=?",
             type:"GET",
             contentType: "application/json",
             data:{

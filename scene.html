@@ -45,7 +45,7 @@
       </ul>
   </div>
   <div class="clear"></div>
-  <div class="content2 ">
+  <div class="content ">
     <div class="scene2">
         <div class="sceneitems">
             <div class="clear"></div>
@@ -91,6 +91,12 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script type='text/javascript' src='js/jquery.md5.js'></script>
 <script src="js/cookie.js"></script>
+<script type="text/javascript">
+    if(!getCookie("UserName")){
+        alert("您尚未登录，请先登录");
+        window.location.href="login.html";
+    }
+</script>
 <script type="text/javascript" src="js/jquery.jedate.js"></script>
 <script type="text/javascript">
     $("body").on('focus','.touristDate',function(){

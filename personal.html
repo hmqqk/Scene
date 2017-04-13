@@ -1,11 +1,10 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>个人中心</title>
+    <meta charset="utf-8">
+    <title>个人中心</title>
 <link  rel="stylesheet"  href="css/base.css"/>
 </head>
-
 <body>
 <header>
     <h1>
@@ -48,31 +47,29 @@
 <div class="mycontainer">
     <aside class="left_content">
         <div id="line_1">
-            <span>Hi,</span>
-            <span id="username_1">HEHONGYAN</span>
+            <span class="hi">Hi&nbsp;,</span>
+            <span id="username_1" class="blue"></span>
         </div>
         <div class="line_2">
-            <span class="black_font">用&nbsp;户&nbsp;ID：</span>
-            <span class="orange_font" id="userID_1">161</span>
+            <span class="phone">电话：</span>
+            <span class="red phoneNum"></span>
         </div>
-        <div class="line_2">
-            <span class="black_font">注册时间：</span>
-            <span class="orange_font" id="register_time">2016-4-11 16:20:31</span>
+        <div class="dsp">
+            <h3 class="accountDsp red">账户信息说明</h3>
+            <div class="dsptext">
+                <p>用户名即为登录用户名</p>
+                <p>如需修改请联系客服</p>
+                <p>其余基本信息可根据实际情况进行修改</p>
+            </div>
         </div>
-        <div id="declare">
-            <h3>账户信息说明</h3>
-            <p>用户名即为登录用户名</p>
-            <p>如需修改请联系客服</p>
-            <p>其余基本信息可根据实际情况进行修改</p>
-        </div>
-</aside>
+   </aside>
     <div id="right_content">
-        <h3>账号信息</h3>
-        <div id="account">
-            <div class="r_item"><span>用户名</span><input id="username2" type="text"></div>
-            <div class="r_item"><span>手机号码</span><input id="usertel" type="text"></div>
-            <div class="r_item"><span>性别</span><input id="sex" type="text"></div>
-            <div class="r_item"><span>生日</span><input id="birthday" type="text"></div>
+        <span class="hi">账号信息</span>
+        <div id="accountMsg">
+            <div class="r_item"><span>姓名</span><input id="username2" type="text" value="" readonly></div>
+            <div class="r_item"><span>身份</span><input id="identity" type="text" value="" readonly></div>
+            <div class="r_item"><span>性别</span><input id="sex" type="text" value="" readonly></div>
+            <div class="r_item"><span>生日</span><input id="birthday" type="text" value="" readonly></div>
         </div>
     </div>
 </div>
@@ -107,5 +104,11 @@
 </body>
 <script  type="text/javascript"  src="js/jquery-2.1.1.min.js"></script>
 <script  type="text/javascript"  src="js/cookie.js"></script>
+<script type="text/javascript">
+    if(!getCookie("UserName")){
+        alert("您尚未登录，请先登录");
+        window.location.href="login.html";
+    }
+</script>
 <script  type="text/javascript"  src="js/base.js"></script>
 </html>

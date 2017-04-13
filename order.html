@@ -50,26 +50,10 @@
            <div class="rows">
                <div class="palyerMsg">
                    <div class="orderTypeMsg">
-                       <div class="timeNav">
-                           <input type="text" class="inputMsg on-selected b1" value="下单时间" readonly>
-                           <em class="i-triangle">
-                               <i class="triangle1"></i>
-                           </em>
-                       </div>
-                       <ul class="orderType">
-                           <li>
-                               <a href="javascript:void(0)" value="0">下单时间</a>
-                           </li>
-                           <li>
-                               <a href="javascript:void(0)" value="1">游玩时间</a>
-                           </li>
-
-                       </ul>
-
-                   </div>
-                   <input type="text" class="inputMsg startTime jedate datepicker-here datainp" id="startTime" data-language="en" value="">
+                   <label class="timeLabel">时间：</label>
+                   <input type="text" class="inputMsg startTime" data-language="en" value="">
                    -
-                   <input type="text" class="inputMsg endTime jedate datepicker-here datainp" id="endTime" data-language="en" value="">
+                   <input type="text" class="inputMsg endTime" data-language="en" value="">
                </div>
            </div>
            <div class="rows">
@@ -78,7 +62,7 @@
                    <div class="orderTypeMsg">
                        <div>
                            <input type="text" class="inputMsg on-selected ticketTypeLength" value="" readonly>
-                           <input type="hidden" value="" class="realNum rName">
+                           <input type="hidden" value="" class="rName rstatusFlag">
                        </div>
                        <ul class="orderType">
                            <li>
@@ -183,13 +167,13 @@
                <div class="distributorType">
                    <div class="orderTypeMsg">
                        <div class="orderSelect">
-                           <input type="text" class="inputMsg on-selected b1 b2" value="下单时间" readonly>
+                           <input type="text" class="inputMsg b1 b2" value="下单时间" readonly>
                            <input type="hidden" value="0" class="realNum">
                            <em class="i-triangle i-triangle2 i-triangle3 b3">
                                <i class="triangle2"></i>
                            </em>
                        </div>
-                       <ul class="orderType">
+                       <ul class="orderType orderTime">
                            <li>
                                <a href="javascript:void(0)" value="0">下单时间&nbsp;▼</a>
                            </li>
@@ -306,15 +290,21 @@
 </body>
 <script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
 <script type="text/javascript"  src="js/cookie.js"></script>
+<script type="text/javascript">
+    if(!getCookie("UserName")){
+        alert("您尚未登录，请先登录");
+        window.location.href="login.html";
+    }
+</script>
 <script type='text/javascript' src='js/jquery.md5.js'></script>
 <script type="text/javascript" src="js/jquery.jedate.js"></script>
 <script type="text/javascript">
-        $("#startTime").jeDate({
+        $(".startTime").jeDate({
             isinitVal:true,
             format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
             initAddVal:[-7,"DD"]
         })
-        $("#endTime").jeDate({
+        $(".endTime").jeDate({
             isinitVal:true,
             format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
         })

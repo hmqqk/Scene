@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>fancial</title>
+    <link rel='stylesheet' href='css/jedate.css'>
     <link rel='stylesheet' href='css/base.css'>
 </head>
 <body id="wrap">
@@ -44,33 +45,33 @@
     </ul>
 </div>
 <div class="clear"></div>
-<div class="fcontent">
+<div class="content fcontent">
     <div class="clear"></div>
     <form class="fancialSearch" method="get">
         <div class="rows rows2">
             <div class="palyerMsg">
                 <label>时间：</label>
-                <input type="text" class="inputMsg startTime jedate datepicker-here datainp finp" id="startTime" data-language="en" value="">
+                <input type="text" class="inputMsg startTime finp"data-language="en" value="">
                 -
-                <input type="text" class="inputMsg endTime jedate datepicker-here datainp finp" id="endTime" data-language="en" value="">
+                <input type="text" class="inputMsg endTime finp" id="endTime" data-language="en" value="">
                 <label>账号：</label>
                 <div class="orderTypeMsg">
                     <div>
                         <input type="text" class="inputMsg on-selected b1 account" value="全部" readonly>
-                        <input type="hidden" value="6" class="realNum rStatus">
-                        <em class="i-triangle">
+                        <input type="hidden" value="0" class="rdistributorFlag">
+                        <em class="i-triangle4">
                             <i class="triangle1"></i>
                         </em>
                     </div>
-                    <ul class="orderType">
-                        <li value="666">
-                            <a href="javascript:void(0)" value="6">全部</a>
+                    <ul class="orderType accountFlag">
+                        <li>
+                            <a href="javascript:void(0)" value="0">全部</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" value="0">上游</a>
+                            <a href="javascript:void(0)" value="2">仅自己</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" value="1">下游</a>
+                            <a href="javascript:void(0)" value="3">下级分销商</a>
                         </li>
                     </ul>
 
@@ -78,47 +79,46 @@
                 <label>交易：</label>
                 <div class="orderTypeMsg">
                     <div>
-                        <input type="text" class="inputMsg on-selected b1 transaction" value="全部" readonly>
-                        <input type="hidden" value="DETAIL" class="realNum rFlag">
-                        <em class="i-triangle">
+                        <input type="text" class="inputMsg b1 transaction" value="全部" readonly>
+                        <input type="hidden" value="0" class="rstatusFlag">
+                        <em class="i-triangle4">
                             <i class="triangle1"></i>
                         </em>
                     </div>
-                    <ul class="orderType">
+                    <ul class="orderType statusFlag">
                         <li>
-                            <a href="javascript:void(0)" value="DETAIL">全部</a>
+                            <a href="javascript:void(0)" value="0">全部</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" value="GroupByDistributorName">充值</a>
+                            <a href="javascript:void(0)" value="1">充值</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" value="GroupByTicketTypeName">交易</a>
+                            <a href="javascript:void(0)" value="2">交易</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" value="DETAIL">购票扣钱</a>
+                            <a href="javascript:void(0)" value="3">购票扣钱</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" value="GroupByDistributorName">退票返钱</a>
+                            <a href="javascript:void(0)" value="4">退票返钱</a>
                         </li>
-                        <li>
-                            <a href="javascript:void(0)" value="GroupByTicketTypeName">下游退票退款</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" value="GroupByTicketTypeName">下游售票入账</a>
-                        </li>
+
                     </ul>
 
                 </div>
                 <label>上游：</label>
-                <input type="text" class="inputMsg startTime jedate datepicker-here datainp finp focusEvent" id="" data-language="en" value="">
+                <input type="text" class="inputMsg focusEvent" id="fatherDistributor" data-language="en" value="">
+                <input type="hidden" class="topIDCode" value="">
                 <label>下游：</label>
-                <input type="text" class="inputMsg endTime jedate datepicker-here datainp finp focusEvent" id="" data-language="en" value="">
-                <input type="button" value="查询" class="search searchbyMultiple">
+                <input type="text" class="inputMsg focusEvent" id="subDistributor" data-language="en" value="">
+                <input type="hidden" class="downIDCode" value="">
+                <input type="button" value="资金查询" class="search getTransaction">
+                <input type="button" value="交易查询" class="search getTransaction2">
             </div>
         </div>
     </form>
     <div class="clear"></div>
     <div class="fancialContent">
+        <span class="fancialIco">资金</span>
         <div class="fcontent1">
             <div class="ff1">
                 <ul class="fcontent1title">
@@ -127,163 +127,33 @@
                     <li>额度</li>
                     <li>余额</li>
                 </ul>
+                <div class="fcontent1itemsall"></div>
+                <!--
                 <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
+                    <li><span class="fatherIDCode">AAC</span><span class="fatherName">游酷网</span></li>
+                    <li><span class="subIDCode">AAe</span><span class="subName">咚咚网</span></li>
                     <li>0</li>
                     <li>1000952</li>
                 </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
-                <ul class="fcontent1items">
-                    <li>游酷网</li>
-                    <li>咚咚网</li>
-                    <li>0</li>
-                    <li>1000952</li>
-                </ul>
+                -->
             </div>
 
         </div>
+    </div>
+    <div class="clear"></div>
+    <div class="fancialContent2">
+        <span class="fancialIco">交易</span>
         <div class="fcontent2">
             <div class="ff2">
                 <ul class="fcontent2title">
                     <li>金额</li>
-                    <li>账户编号</li>
                     <li>账户名称</li>
-                    <li>交易编码</li>
                     <li>日期</li>
                     <li>属性</li>
+                    <li>交易原因</li>
                 </ul>
+                <div class="fcontent2itemsall"></div>
+                <!--
                 <ul class="fcontent2items">
                     <li>0</li>
                     <li>418</li>
@@ -292,126 +162,8 @@
                     <li>2017/4/3</li>
                     <li>充值</li>
                 </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
-                <ul class="fcontent2items">
-                    <li>0</li>
-                    <li>418</li>
-                    <li>孙萍</li>
-                    <li>55</li>
-                    <li>2017/4/3</li>
-                    <li>充值</li>
-                </ul>
+                -->
+
             </div>
 
 
@@ -449,6 +201,26 @@
 
 <script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
 <script type="text/javascript"  src="js/cookie.js"></script>
+<script type="text/javascript">
+    if(!getCookie("UserName")){
+        alert("您尚未登录，请先登录");
+        window.location.href="login.html";
+    }
+</script>
+<script type='text/javascript' src='js/jquery.md5.js'></script>
+<script type="text/javascript" src="js/jquery.jedate.js"></script>
+<script type="text/javascript">
+    $(".startTime").jeDate({
+        isinitVal:true,
+        format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+        initAddVal:[-7,"DD"]
+    })
+    $(".endTime").jeDate({
+        isinitVal:true,
+        format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+    })
+
+</script>
 <script type="text/javascript"  src="js/base.js"></script>
 </html>
 

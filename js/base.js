@@ -1,7 +1,7 @@
 /**
  * Created by liuhong on 2016/11/22.
  */
-(function(){
+$(document).ready(function(){
     /*login_part and register_part*/
     $("#login").click(function () {
         var token1="3714861a5b5d78f9bd5d25cb25b371a1358";//任意传即可
@@ -43,13 +43,6 @@
                 }
             });
         }
-
-
-
-
-
-
-
     })
     $('#back').click(function(){
        window.location.href="index.html";
@@ -58,7 +51,7 @@
         var UName=getCookie("UserName");
         var box_user=$(".box_user");
         var cookieMsg="<div>"+
-            "<a href=\"personCenter.html\" class=\"uCookie\">"+UName+"</a>"+
+            "<a href=\"personal.html\" class=\"uCookie\">"+UName+"</a>"+
             "<span>|</span>"+
             "<a href=\"javascript:void(0)\" class=\"uLogout\">退出</a>"+
             "</div>";
@@ -74,28 +67,16 @@
         }
         $(".uLogout").on("click",function(){
             emptyCookie();
-            window.location.reload();
+            window.location.href="index.html";
         })
     function printHtml(container,Msg) {
         container.html(Msg);
     }
     //order_part
-    var channelChoice1;
+    var channelChoice1,querystr1,code1,beginDate1,endDate1,ticketType1,groupOrDetailFlag1,orderState1,subDistributorInFlag1,ticketID,avaliablenum1,content2D1,phoneNumber1,statusFlag1,rdistributorFlag1,fatherIDCode1,subIDCode1;
     var channelChoices=$(".channel");
     var token1 = getCookie("token");
-    var querystr1;
     var distributorIDCode1 = getCookie("distributorIDCode");
-    var code1 = channelChoice1;
-    var beginDate1;
-    var endDate1;
-    var ticketType1;
-    var groupOrDetailFlag1;
-    var orderState1;
-    var subDistributorInFlag1;
-    var ticketID;
-    var avaliablenum1;
-    var content2D1;
-    var phoneNumber1;
     function outputData(container, item) {
         var str= "<div class=\"menuDsp\">"+
             "<div class=\"menuHead\">"+
@@ -219,6 +200,34 @@
             "</ul>";
         container.append(str);
     }
+    function outputData6(container,item){
+        var str="<ul class=\"fcontent1items\">"+
+        "<li><span class=\"fatherIDCode\">"+item.FatherDistributorIDCode+"</span><span class=\"fatherName\">"+item.FatherDistributorName+"</span></li>"+
+            "<li><span class=\"subIDCode\">"+item.SubDistributorIDCode+"</span><span class=\"subName\">"+item.SubDistributorName+"</span></li>"+
+            "<li>"+item.CreditLimit+"</li>"+
+            "<li>"+item.CreditAvailable+"</li>"+
+            "</ul>";
+        container.append(str);
+
+    }
+    function outputData7(container,item){
+        var str="<ul class=\"fcontent2items\">"+
+        "<li>"+item.Amount+"</li>"+
+        "<li>"+(item.AccountName==null?"总平台":item.AccountName)+"</li>"+
+        "<li>"+item.TransactionTime.substr(0,10)+"</li>"+
+        "<li>"+item.Status+"</li>"+
+        "<li>"+item.Reason+"</li>"+
+        "</ul>";
+        container.append(str);
+    }
+    function outputData8(container,item){
+        var str="<aside class=\"left_content\"> <div id=\"line_1\"> <span class=\"hi\">Hi&nbsp;,</span> <span id=\"username_1\" class=\"blue\">HEHONGYAN</span> </div> <div class=\"line_2\"> "+
+        "<span class=\"phone\">电话：</span> <span class=\"red\">18292864770</span> </div> <div class=\"dsp\"> <h3 class=\"accountDsp red\">账户信息说明</h3> <div class=\"dsptext\"> <p>用户名即为登录用户名</p> <p>如需修改请联系客服</p> "+
+        "<p>其余基本信息可根据实际情况进行修改</p> </div> </div> </aside>"+
+            "<div id=\"right_content\"> <span class=\"hi\">账号信息</span> <div id=\"accountMsg\"> <div class=\"r_item\"><span>姓名</span><input id=\"username2\" type=\"text\" value=\"刘红\" readonly></div> <div class=\"r_item\"><span>手机</span><input id=\"usertel\" type=\"text\" value=\"18292864770\" readonly></div> "+
+        "<div class=\"r_item\"><span>性别</span><input id=\"sex\" type=\"text\" value=\"女\" readonly></div> <div class=\"r_item\"><span>生日</span><input id=\"birthday\" type=\"text\" value=\"十月初三\" readonly></div> </div> </div>";
+    container.append(str);
+    }
     function getTicketstatus(i){
         switch (i)
         {
@@ -232,8 +241,16 @@
         }
 
     }
-    function getQueryVariable(variable)
-    {
+    /*判别用户性别*/
+    function getSexstatus(i){
+        switch (i)
+        {
+            case 0:return "女";
+            case 1:return "男";
+        }
+
+    }
+    function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split("&");
         for (var i=0;i<vars.length;i++) {
@@ -253,12 +270,13 @@
         ticketID=$(this).parent("li").parent(".items").siblings(".menuHead1").find(".content2D").text();
         $(".calcleMenu").css("display","block");
         $(".electName").attr("value",ticketID);
-        document.documentElement.style.overflow='hidden';
+        //document.documentElement.style.overflow='hidden';
 
     });
     $("body").on("click",".orderCancle2",function(){
         $(".calcleMenu").css("display","none");
         document.documentElement.style.overflow='auto';
+        return false;
 
     });
     $("body").on("click",".orderSure2",function(){
@@ -269,10 +287,11 @@
             contentType: "application/json",
             data:{
                 "token":token1,
-                "isPayed":"0",
                 "Content2D":ticketID,
+                "num2Buy":avaliablenum1,
+                "isPayed":"0",
                 "channel":"0",
-                "num2Buy":"-"+avaliablenum1
+                "verifycode":$.md5(token1+ticketID+avaliablenum1+"0"+"0")
             },
             dataType: "jsonp",
             jsonp:'callback',
@@ -289,6 +308,7 @@
                 alert("退票失败");
             }
         });
+        return false;
     });
     $("body").on("click",".orderAdd2",function(){
         avaliablenum1=parseInt($(".cancleNum").val());
@@ -298,18 +318,21 @@
             contentType: "application/json",
             data:{
                 "token":token1,
-                "isPayed":"0",
                 "Content2D":ticketID,
+                "num2Buy":avaliablenum1,
+                "isPayed":"0",
                 "channel":"0",
-                "num2Buy":avaliablenum1
+                "verifycode":$.md5(token1+ticketID+avaliablenum1+"0"+"0")
             },
             dataType: "jsonp",
             jsonp:'callback',
             jsonpCallback:'jsonpCallback',
             timeout:3000,
             success: function (result) {
+                //alert("执行zengpiao");
+                //alert(result.STATUS+result.MESSAGE);
                 if(result.STATUS=="OOOKK"){
-                    alert("新增成功");
+                    alert("新增票成功");
                     $(".calcleMenu").css("display","none");
                     document.documentElement.style.overflow='auto';
                 }
@@ -318,6 +341,7 @@
                 alert("退票失败");
             }
         });
+        return false;
     });
     $(".searchbyTime").click(function(){
 
@@ -325,12 +349,12 @@
             if(channelChoices[i].checked == true){
                 channelChoice1=channelChoices[i].value;
                 subDistributorInFlag1=channelChoice1;
-
             }
         }
         beginDate1=$(".startTime").val();
         endDate1=$(".endTime").val();
         ticketType1=$(".rName").val();
+        //alert("ticketType1="+ticketType1);
         var groupOrDetailFlag1=$(".rFlag").val();
         orderState1=$(".rStatus").val();
         //alert("subDistributorInFlag1"+channelChoice1);
@@ -340,16 +364,17 @@
             contentType: "application/json",
             data:{
                 "token":token1,
-                "distributorIDCode":distributorIDCode1,
+                "ticketTypeID":ticketType1,
+                "parkID":"0",
                 "beginDate":beginDate1,
                 "endDate":endDate1,
-                "ticketTypeID":ticketType1,
-                "parkID":0.000,
-                "operatorID":0,
-                "salerID":0,
+                "operatorID":"0",
+                "salerID":"0",
+                "distributorIDCode":distributorIDCode1,
                 "subDistributorInFlag":subDistributorInFlag1,
                 "groupOrDetailFlag":groupOrDetailFlag1,
-                "orderState":orderState1
+                "orderState":orderState1,
+                "verifycode":$.md5(token1+ticketType1+"0"+beginDate1+endDate1+"0"+"0"+distributorIDCode1+subDistributorInFlag1+groupOrDetailFlag1+orderState1)
             },
             dataType: "jsonp",
             jsonp:'callback',
@@ -594,12 +619,13 @@
                 "token":token1,
                 "querystr":querystr1,
                 "distributorIDCode":distributorIDCode1,
-                "code":code1
+                "code":code1,
+                "verifycode":$.md5(token1+querystr1+distributorIDCode1+code1)
             },
             dataType: "jsonp",
             jsonp:'callback',
             jsonpCallback:'jsonpCallback',
-            timeout:3000,
+            timeout:30000,
             success: function (result) {
                 alert("ok吗");
                 alert(result.MESSAGE);
@@ -644,6 +670,7 @@
         document.documentElement.style.overflow='hidden';
     });
     $("body").on("click",".orderSure3",function(){
+        //$(this).text("查询中").attr("disabled","true");
         phoneNumber1=$(".phoneNum").val();
         jQuery.ajax({
             url:"http://www.52uku.net/webservice.asmx/SendOrderEticketsByContent2D?jsoncallback=?",
@@ -652,36 +679,39 @@
             data:{
                 "token":token1,
                 "Content2D":content2D1,
-                "phoneNumber":phoneNumber1
+                "phoneNumber":phoneNumber1,
+                "verifycode":$.md5(token1+content2D1+phoneNumber1)
             },
             dataType: "jsonp",
             jsonp:'callback',
             jsonpCallback:'jsonpCallback',
-            timeout:3000,
+            timeout:30000,
             success: function (result) {
-                // alert("ok吗");
+                //alert(result.STATUS+result.MESSAGE);
                 if (result.STATUS == "OOOKK") {
-
-                    //alert("查询成功");
-                    $(".calcleMenu2").css("display","none");
+                    alert("重发码成功，请注意查收短信息！");
+                    $(".calcleMenu2").hide();
                     document.documentElement.style.overflow='auto';
-
                 }
+               //$(this).text("确定").removeAttr("disabled");
             },
             error: function(err){
                 alert("重发码失败");
+               //$(this).text("确定").removeAttr("disabled");
             }
         });
+        return false;
     });
     $(".orderCancle3").click(function(){
         $(".calcleMenu2").css("display","none");
         document.documentElement.style.overflow='auto';
+        return false;
     });
     $("body").on("click",".detailMsg",function(){
         $(this).parents(".items").nextUntil(".items").slideToggle();
         $(this).text()=="查看详情"?$(this).text("收起详情"):$(this).text("查看详情")
     })
-    $(".i-triangle").click(function(){
+    $(".i-triangle,.i-triangle4").click(function(){
         $(this).parents('.orderTypeMsg').find('.orderType').css("display","block");
     });
     $(".orderType").hover(function(){
@@ -691,9 +721,280 @@
     });
     $(".orderType li").click(function(){
         $(this).parent(".orderType").siblings("div").find("input.inputMsg").attr("value",$(this).find("a").text());
-        $(this).parent(".orderType").siblings("div").find(".realNum").attr("value",$(this).find("a").attr("value"));
+        $(this).parent(".orderType").siblings("div").find(".realNum,.rstatusFlag,.rdistributorFlag").attr("value",$(this).find("a").attr("value"));
         $(this).parent(".orderType").hide();
     });
-})();
 
+    $(".getTransaction").click(function(){
+        beginDate1=$(".startTime").val();
+        endDate1=$(".endTime").val();
+        rdistributorFlag1=$(".rdistributorFlag").val();
+        //alert("rdistributorFlag1 ="+typeof(rdistributorFlag1));
+        distributorIDCode1=getCookie("distributorIDCode1");
+        statusFlag1=$(".rstatusFlag").val();
+        fatherIDCode1=$(".topIDCode").val();
+        subIDCode1=$(".downIDCode").val();
+        jQuery.ajax({
+            url: "http://www.52uku.net/webservice.asmx/getCreditByDistriborID?jsoncallback=?",
+            type: "GET",
+            contentType: "application/json",
+            data: {
+                "token": token1,
+                "distributorID": getCookie("distributorID"),
+                "verifycode": $.md5(token1 + getCookie("distributorID"))
+            },
+            dataType: "jsonp",
+            jsonp: 'callback',
+            jsonpCallback: 'jsonpCallback',
+            timeout: 30000,
+            success: function (result) {
+                //alert("要显示了");
+                if (result.STATUS == "OOOKK") {
+                    $(".fcontent1items").remove();
+                    if (result.RECODENUM > 0) {
+                        $(".fancialContent").show();
+                        $.each(result.Credits, function (index, item) {
+                            outputData6($(".fcontent1itemsall"), item);
+                        });
+                    } else {
+                        $(".fancialContent").hide();
+                        alert(result.MESSAGE);
+                        //$(".noMenu").show().find(".noText").text("未查询到订单");
+                    }
+                }
+                else if(result.STATUS == "ERROR"){
+                     alert(result.MESSAGE);
+                    }
+            } ,
+            error: function(err){
+                alert("请求超时");
+            }
+        });
+    });
+    $(".getTransaction2").click(function(){
+        beginDate1=$(".startTime").val();
+        endDate1=$(".endTime").val();
+        rdistributorFlag1=$(".rdistributorFlag").val();
+        //alert("rdistributorFlag1 ="+typeof(rdistributorFlag1));
+        distributorIDCode1=getCookie("distributorIDCode1");
+        statusFlag1=$(".rstatusFlag").val();
+        fatherIDCode1=$(".topIDCode").val();
+        subIDCode1=$(".downIDCode").val();
+        if(fatherIDCode1!=""){
+            //alert("执行此处2");
+            jQuery.ajax({
+                url:"http://www.52uku.net/webservice.asmx/getTransactionRecordByCondition?jsoncallback=?",
+                type:"GET",
+                contentType: "application/json",
+                data:{
+                    "token":token1,
+                    "distributorFlag":"1",
+                    "fatherDistirbutorIDCode":fatherIDCode1,
+                    "subDistributorIDCode":subIDCode1,
+                    "startDate":beginDate1,
+                    "endDate":endDate1,
+                    "statusFlag":statusFlag1,
+                    "verifycode":$.md5(token1+"1"+fatherIDCode1+subIDCode1+beginDate1+endDate1+statusFlag1)
+                },
+                dataType: "jsonp",
+                jsonp:'callback',
+                jsonpCallback:'jsonpCallback',
+                timeout:30000,
+                success: function (result) {
+                    if(result.STATUS=="OOOKK"){
+                        if (result.RECODENUM > 0) {
+                            $(".fancialContent2").show();
+                            $.each(result.TransactionInfo, function (index, item) {
+                                outputData7($(".fcontent2itemsall"), item);
+                            });
+                        }
+                    }
+                    else if(result.STATUS == "ERROR"){
+                        $(".fancialContent2").hide();
+                        alert(result.MESSAGE);
+                    }
+                } ,
+                error: function(err){
+                    alert("请求超时");
+                }
+            });
+        }
+        else{
+            if(rdistributorFlag1==0){
+                //alert("执行此处");
+                jQuery.ajax({
+                    url:"http://www.52uku.net/webservice.asmx/getTransactionRecordByCondition?jsoncallback=?",
+                    type:"GET",
+                    contentType: "application/json",
+                    data:{
+                        "token":token1,
+                        "distributorFlag":rdistributorFlag1,
+                        "fatherDistirbutorIDCode":distributorIDCode1,
+                        "subDistributorIDCode":"",
+                        "startDate":beginDate1,
+                        "endDate":endDate1,
+                        "statusFlag":statusFlag1,
+                        "verifycode":$.md5(token1+rdistributorFlag1+distributorIDCode1+""+beginDate1+endDate1+statusFlag1)
+                    },
+                    dataType: "jsonp",
+                    jsonp:'callback',
+                    jsonpCallback:'jsonpCallback',
+                    timeout:30000,
+                    success: function (result) {
+                        $(".fcontent2items").remove();
+                        if (result.RECODENUM > 0) {
+                            $(".fancialContent2").show();
+                            $.each(result.TransactionInfo, function (index, item) {
+                                outputData7($(".fcontent2itemsall"), item);
+                            });
+                        } else {
+                            $(".fancialContent2").hide();
+                            alert(result.MESSAGE);
 
+                            //$(".noMenu").show().find(".noText").text("未查询到订单");
+                        }
+                    } ,
+                    error: function(err){
+                        alert("查询失败");
+                    }
+                });
+            }
+            if(rdistributorFlag1==2){
+                jQuery.ajax({
+                    url:"http://www.52uku.net/webservice.asmx/getTransactionRecordByCondition?jsoncallback=?",
+                    type:"GET",
+                    contentType: "application/json",
+                    data:{
+                        "token":token1,
+                        "distributorFlag":rdistributorFlag1,
+                        "fatherDistirbutorIDCode":distributorIDCode1,
+                        "subDistributorIDCode":"",
+                        "startDate":beginDate1,
+                        "endDate":endDate1,
+                        "statusFlag":statusFlag1,
+                        "verifycode":$.md5(token1+rdistributorFlag1+getCookie("distributorIDCode")+""+beginDate1+endDate1+statusFlag1)
+                    },
+                    dataType: "jsonp",
+                    jsonp:'callback',
+                    jsonpCallback:'jsonpCallback',
+                    timeout:30000,
+                    success: function (result) {
+                        if(result.STATUS=="OOOKK"){
+                            if (result.RECODENUM > 0) {
+                                $(".fancialContent2").show();
+                                $.each(result.TransactionInfo, function (index, item) {
+                                    outputData7($(".fcontent2itemsall"), item);
+                                });
+                            } else {
+                                $(".fancialContent2").hide();
+                                alert(result.MESSAGE);
+
+                                //$(".noMenu").show().find(".noText").text("未查询到订单");
+                            }
+                        }
+                    } ,
+                    error: function(err){
+                        alert("请求超时");
+                    }
+                });
+            }
+            if(rdistributorFlag1==3){
+                jQuery.ajax({
+                    url:"http://www.52uku.net/webservice.asmx/getTransactionRecordByCondition?jsoncallback=?",
+                    type:"GET",
+                    contentType: "application/json",
+                    data:{
+                        "token":token1,
+                        "distributorFlag":rdistributorFlag1,
+                        "fatherDistirbutorIDCode":"",
+                        "subDistributorIDCode":distributorIDCode1,
+                        "startDate":beginDate1,
+                        "endDate":endDate1,
+                        "statusFlag":statusFlag1,
+                        "verifycode":$.md5(token1+rdistributorFlag1+""+distributorIDCode1+beginDate1+endDate1+statusFlag1)
+                    },
+                    dataType: "jsonp",
+                    jsonp:'callback',
+                    jsonpCallback:'jsonpCallback',
+                    timeout:30000,
+                    success: function (result) {
+                        if(result.STATUS=="OOOKK"){
+                            if (result.RECODENUM > 0) {
+                                $(".fancialContent2").show();
+                                $.each(result.TransactionInfo, function (index, item) {
+                                    outputData7($(".fcontent2itemsall"), item);
+                                });
+                            } else {
+                                alert(result.MESSAGE);
+                                $(".fancialContent2").hide();
+                                //$(".noMenu").show().find(".noText").text("未查询到订单");
+                            }
+                        }
+                    } ,
+                    error: function(err){
+                        alert("请求超时");
+                    }
+                });
+            }
+        }
+    });
+    $("body").on("dblclick",".fcontent1items",function(){
+        beginDate1=$(".startTime").val();
+        endDate1=$(".endTime").val();
+        statusFlag1=$(".rstatusFlag").val();
+        //alert("statusFlag1 is"+statusFlag1);
+       var fatherDistributor1=$(this).find(".fatherIDCode").text();
+       var subDistributor1=$(this).find(".subIDCode").text();
+        //alert(fatherDistributor1+subDistributor1);
+        jQuery.ajax({
+            url:"http://www.52uku.net/webservice.asmx/getTransactionRecordByCondition?jsoncallback=?",
+            type:"GET",
+            contentType: "application/json",
+            data:{
+                "token":token1,
+                "distributorFlag":"1",
+                "fatherDistirbutorIDCode":fatherDistributor1,
+                "subDistributorIDCode":subDistributor1,
+                "startDate":beginDate1,
+                "endDate":endDate1,
+                "statusFlag":statusFlag1,
+                "verifycode":$.md5(token1+"1"+fatherDistributor1+subDistributor1+beginDate1+endDate1+statusFlag1)
+            },
+            dataType: "jsonp",
+            jsonp:'callback',
+            jsonpCallback:'jsonpCallback',
+            timeout:3000,
+            success: function (result) {
+                if(result.STATUS=="OOOKK"){
+                    if (result.RECODENUM > 0) {
+                        $(".fancialContent2").show();
+                        $.each(result.TransactionInfo, function (index, item) {
+                            outputData7($(".fcontent2itemsall"), item);
+                        });
+                    }
+                }
+                else{
+                    $(".fancialContent2").hide();
+                    alert(result.MESSAGE);
+                }
+            } ,
+            error: function(err){
+                alert("请求超时");
+            }
+        });
+    });
+    $("body").on("click",".fcontent1items",function(){
+        $("#fatherDistributor").attr("value",$(this).find(".fatherName").text());
+        $("#subDistributor").attr("value",$(this).find(".subName").text());
+        $(".topIDCode").attr("value",$(this).find(".fatherIDCode").text());
+        //alert($(".topIDCode").val());
+        $(".downIDCode").attr("value",$(this).find(".subIDCode").text());
+        //alert($(".downIDCode").val());
+    });
+    $("#username_1").text(getCookie("UserName"));
+    $("#phoneNum").text(getCookie("UserMobile"));
+    $("#username2").attr("value",getCookie("UserRealName"));
+    $("#identity").attr("value",getCookie("UserIdentity"));
+    $("#sex").attr("value",getSexstatus(parseInt((getCookie("Sex")))));
+    $("#birthday").attr("value",getCookie("Birthday").substr(0,10));
+});

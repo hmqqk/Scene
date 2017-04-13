@@ -108,6 +108,7 @@ color:#029bc1;
 }
 body{
 	font: 14px/1.6 Verdana, 宋体, Helvetica, sans-serif;
+	zoom:1;
 }
 #warp{
 	width:100%;
@@ -183,14 +184,12 @@ header{
 	padding:9px;
 	font-size:16px;
 }
-.icon-bag{background:url(../images/icon-bag.gif) 12px 50% no-repeat; padding-left:24px;}
 .box_shop{
 	float:left;
 	margin-right:16px;
 }
  #shop_user .box_shop a:hover{
-border:1px  solid  #029bc1;	
-background:url(../images/icon_bag_hover.gif) 12px 50% no-repeat; padding-left:24px;
+border:1px  solid  #029bc1;
 color:#029bc1;
 }
 .box_user{
@@ -248,7 +247,7 @@ color:#029bc1;
 	color:#029BC1;
 }
 .pic{
-    width:1600px;
+    width:100%;
 	height:405px;
 }
 
@@ -519,11 +518,7 @@ p.c_bn{
 .content{
 	width:1200px;
 	margin: 20px auto;
-	background-color:#FFFFFF;
-}
-.content2{
-	width:1200px;
-	margin: 20px auto;
+	min-height:400px;
 	background-color:#FFFFFF;
 }
 .clear{
@@ -547,7 +542,7 @@ p.c_bn{
 
 }
 .on-selected{
-	width:110px !important;
+	width:142px !important;
 }
 .palyerMsg:not(:first-child){
 	margin-left:20px;
@@ -604,9 +599,9 @@ p.c_bn{
 	left:194px;
 }
 .i-triangle2{
-	position:relative;
-	top:11.2px;
-	left:-5px;
+	position: absolute;
+	top: 0;
+	left: 121px;
 	width: 32px;
 	height:30px;
 	background: #FFF;
@@ -616,9 +611,9 @@ p.c_bn{
 	cursor: pointer;
 }
 .i-triangle{
-	position:relative;
-	top:11.2px;
-	left:-5px;
+	position: absolute;
+	top: 0;
+	left: 121px;
 	width: 32px;
 	height:30px;
 	background: #FFF;
@@ -627,14 +622,25 @@ p.c_bn{
 	cursor: pointer;
 }
 .i-triangle3{
-	position:relative;
-	top:11px;
-	left:-5px;
+	position: absolute;
+	top: 0;
+	left: 91px;
 	width: 32px;
-	height:31px;
+	height:30px;
 	background: #FFF;
 	display:inline-block;
 	border:none;
+	cursor: pointer;
+}
+.i-triangle4{
+	position: absolute;
+	top: 0;
+	left: 91px;
+	width: 32px;
+	height:30px;
+	background: #FFF;
+	display:inline-block;
+	border:1px solid #999;
 	cursor: pointer;
 }
 .triangle1{
@@ -660,17 +666,24 @@ p.c_bn{
 	border-bottom: none;
 }
 
-.orderType{
-	position:absolute;
-	left:0;
-	top:42px;
-	width:153px;
+.orderType,.statusFlag{
+	position: absolute;
+	left: 0;
+	top: 30px;
+	width: 153px;
 	background-color:#fff;
 	border:1px solid gray;
 	display:none;
 	z-index:1;
 	text-align:left;
 }
+.orderTime{
+	width:126px;
+}
+.accountFlag,.statusFlag{
+	width:123px;
+}
+
 .orderType li{
 	position:relative;
 	list-style-type:none;
@@ -927,6 +940,9 @@ padding-top:28px;
 	z-index:1;
 	border:1px solid #ccc;
 	display:none;
+}
+.focusEvent{
+	width:155px;
 }
 .multiple{
 	width:230px;
@@ -1487,6 +1503,9 @@ p.c_bn{
 .name8{
 	width:40%;
 }
+.itemsDetail .name8 span{
+	padding-left:30px;
+}
 .highcharts-legend rect {
 	stroke:none;
 }
@@ -1524,19 +1543,21 @@ p.c_bn{
 	padding-bottom:30px;
 	background-color:#F5F5F5;
 	color:#666;
-	margin-top:20px;
+	margin:0 auto;
 }
-.fancialContent{
+.fancialContent,.fancialContent2{
 	position:relative;
 	background:#F5F5F5;
+	margin-top:40px;
+}
+.fancialContent,.fancialContent2{
+	display:none;
 }
 .fcontent1 ul{
-	float:left;
-	width:96%;
+  overflow:hidden;
 }
 .fcontent2 ul{
-	float:right;
-	width:98%;
+	overflow:hidden;
 }
 .fcontent1 ul,.fcontent2 ul{
 	padding:10px;
@@ -1546,56 +1567,52 @@ p.c_bn{
 
 .fcontent1{
 	position:relative;
-	float:left;
-	width:33%;
+	width:100%;
 	border:1px solid #F5F5F5;
-	padding:20px;
 }
 .fcontent2{
 	position:relative;
-	float:right;
-	width:60%;
-	padding:20px;
+	width:100%;
+	border:1px solid #F5F5F5;
 }
 .ff1{
 	position:relative;
-	width:100%;
-	height:500px;
-	left:10px;
-	float:left;
+	width:90%;
 	border: 1px solid #ddd;
 	background-color: #fff;
 	box-shadow: 2px 2px 2px 2px #eee;
 	text-align:center;
-	overflow-y:scroll;
+	margin:20px auto;
+	overflow-x:hidden;
 }
 .ff2{
 	position:relative;
-	width:100%;
-	max-height:500px;
-	float:right;
-	right:10px;
+	width:90%;
 	border: 1px solid #ddd;
 	background-color: #fff;
 	box-shadow: 2px 2px 2px 2px #eee;
 	text-align:center;
-	overflow-y:scroll;
+	margin:20px auto;
+	overflow-x:hidden;
 }
 ul.fcontent1title,ul.fcontent2title{
 	background:#F5F5F5;
 }
 .fcontent1 li,.fcontent2 li{
 	float:left;
-	text-align:left;
+	text-align:center;
 }
 .fcontent1 li{
 	width:25%;
 }
 .fcontent2 li{
-	width:16.6%;
+	width:20%;
 }
 input.finp{
-	width:165px;
+	width:120px;
+}
+.fcontent1itemsall,.fcontent2itemsall{
+	max-height:300px;
 }
 .fcontent1items,.fcontent2items{
 	font-size:13px;
@@ -1616,7 +1633,9 @@ input.finp{
 button{
 	outline:none;
 }
+
 .focusEvent:focus{
+	border:1px solid #029BC1;
 	border:1px solid #029BC1;
 }
 /*ticketType_part*/
@@ -1659,9 +1678,9 @@ button{
 	top:50px;
 	right:180px;
 	margin-left:780px;
-	padding:10px;
-	border:1px solid #F5F5F5;
+	border:1px solid #ddd;
 	background:#fff;
+	padding:20px 20px 40px 20px;
 
 }
 .mycontainer{
@@ -1670,4 +1689,85 @@ button{
 	background:#F5F5F5;
 	padding-bottom:30px;
 	overflow:hidden;
+}
+.fatherIDCode,.subIDCode{
+	display:none;
+}
+.account,.transaction{
+	width:114px !important;
+}
+.left_content{
+	padding:20px;
+	background:#f6fafb;
+	border:1px solid #ddd;
+}
+.hi{
+	font-size:18px;
+	font-weight:bold;
+}
+#username_1{
+	font-size:18px;
+}
+.line_2{
+	margin:10px 0;
+	padding:10px 0;
+}
+.phone{
+	color:#666;
+	padding-left:25px;
+	background:url(../images/phone.png) no-repeat 0 center ;
+	background-size:20px 20px;
+
+}
+.dsptext{
+	font-size:12px;
+	color:#666;
+	margin-top:10px;
+	padding-left:25px;
+
+}
+
+#accountMsg{
+	position:relative;
+	margin:20px;
+	color:#666;
+}
+#accountMsg input{
+	position:relative;
+	width:250px;
+	height:15px;
+	padding:10px;
+	margin-left:50px;
+}
+.r_item{
+	margin-bottom:10px;
+	padding-left:15px;
+}
+.r_item input{
+	border:none;
+
+}
+.accountDsp{
+	font-size:14px;
+	padding-left:25px;
+	background:url(../images/help.png) no-repeat 0 center ;
+	background-size:20px 20px;
+}
+#right_content span.hi{
+	padding-left:35px;
+	background:url(../images/heart.png) no-repeat 0 center ;
+	background-size:30px 30px;
+}
+.getTransaction,.getTransaction2{
+	width:90px;
+}
+.fancialIco{
+	font-size:18px;
+	font-weight:bold;
+	padding-left:35px;
+	background:url(../images/star_full.png) no-repeat 0 center ;
+	background-size:30px 30px;
+}
+button{
+	cursor:pointer;
 }
